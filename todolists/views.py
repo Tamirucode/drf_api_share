@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .models import ToDoList
 
-# Create your views here.
+class ToDoListList(APIView):
+    def get(self, request):
+        todolists = ToDoList.objects.all()
+        return Response(todolists)
+
