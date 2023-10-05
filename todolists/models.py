@@ -5,7 +5,7 @@ class ToDoList(models.Model):
     ToDoList model, related to 'user', i.e. a User instance.
     
     """
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
