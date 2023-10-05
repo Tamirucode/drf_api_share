@@ -3,7 +3,7 @@ from .models import ToDoList
 
 
 class ToDoListSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='user.username')
+    owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
         model = ToDoList
