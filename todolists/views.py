@@ -8,6 +8,9 @@ from drf_api_share.permissions import IsOwnerOrReadOnly
 
 
 class ToDoListList(APIView):
+    """
+    List todolist or create a todolist if logged in
+    """
     serializer_class = ToDoListSerializer
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly
@@ -33,6 +36,9 @@ class ToDoListList(APIView):
         )
 
 class ToDoListDetail(APIView):
+    """
+    Retrieve a todolist and edit or delete it if you own it
+    """
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = ToDoListSerializer
 

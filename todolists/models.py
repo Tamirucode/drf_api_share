@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+
 class ToDoList(models.Model):
     """
     ToDoList model, related to 'user', i.e. a User instance.
