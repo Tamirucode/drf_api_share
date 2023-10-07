@@ -1,4 +1,5 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions,filters
+from django_filters.rest_framework import DjangoFilterBackend
 from drf_api_share.permissions import IsOwnerOrReadOnly
 from .models import ToDoItem
 from .serializers import ToDoItemSerializer, ToDoItemDetailSerializer
@@ -15,6 +16,20 @@ class ToDoItemList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
+    filter_backends = [
+        
+        filters.SearchFilter,
+        DjangoFilterBackend,
+    ]
+    filterset_fields=[
+        
+       'owner__todoitem',
+       
+    ]
+    search_fields = [
+        'owner__username',
+        'title',
+    ]
 
 class ToDoItemDetail(generics.RetrieveUpdateDestroyAPIView):
     """

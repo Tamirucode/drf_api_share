@@ -1,4 +1,5 @@
 from rest_framework import generics, permissions, filters 
+from django_filters.rest_framework import DjangoFilterBackend
 from drf_api_share.permissions import IsOwnerOrReadOnly
 from .models import ToDoList
 from .serializers import ToDoListSerializer
@@ -16,6 +17,12 @@ class ToDoListList(generics.ListCreateAPIView):
     filter_backends = [
         
         filters.SearchFilter,
+        DjangoFilterBackend,
+    ]
+    filterset_fields=[
+        
+       'owner__todolist',
+       'owner__profile',
     ]
     search_fields = [
         'owner__username',
