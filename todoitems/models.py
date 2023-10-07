@@ -28,4 +28,4 @@ class ToDoItem(models.Model):
     
     
     def __str__(self):
-        return f"{self.title}: due{self.due_date}"
+        return f"{self.title}: due {self.due_date}"
