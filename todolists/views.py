@@ -1,4 +1,4 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, filters 
 from drf_api_share.permissions import IsOwnerOrReadOnly
 from .models import ToDoList
 from .serializers import ToDoListSerializer
@@ -12,7 +12,15 @@ class ToDoListList(generics.ListCreateAPIView):
     serializer_class = ToDoListSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = ToDoList.objects.all()
-
+    
+    filter_backends = [
+        
+        filters.SearchFilter,
+    ]
+    search_fields = [
+        'owner__username',
+        'title',
+    ]
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
