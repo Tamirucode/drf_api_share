@@ -62,7 +62,7 @@ SECRET_KEY = os.getenv('randomnumber20231976')
 DEBUG = 'DEV' in os.environ
 
 #ALLOWED_HOSTS = ['8000-tamirucode-drfapishare-rxgp524om7j.ws-eu105.gitpod.io']
-ALLOWED_HOSTS = ['localhost', 'drf-todo2023.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'https://drf-todo2023-76af1f9fdada.herokuapp.com']
 
 
 # Application definition
