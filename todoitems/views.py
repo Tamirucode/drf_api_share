@@ -24,7 +24,7 @@ class ToDoItemList(generics.ListCreateAPIView):
     filterset_fields=[
         
        'owner__todoitem',
-       
+       'owner__profile',
     ]
     search_fields = [
         'owner__username',
