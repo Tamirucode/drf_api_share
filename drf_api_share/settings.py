@@ -61,7 +61,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 
 #ALLOWED_HOSTS = ['8000-tamirucode-drfapishare-rxgp524om7j.ws-eu105.gitpod.io']
-ALLOWED_HOSTS = ['localhost', 'https://drf-todo2023-76af1f9fdada.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'drf-todo2023-76af1f9fdada.herokuapp.com']
 
 
 # Application definition
