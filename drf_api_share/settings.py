@@ -58,10 +58,10 @@ REST_AUTH_SERIALIZERS = {
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEV' in os.environ
+DEBUG = True
 
-ALLOWED_HOSTS = ['8000-tamirucode-drfapishare-rxgp524om7j.ws-eu105.gitpod.io']
-#ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST'), 'localhost']
+#ALLOWED_HOSTS = ['8000-tamirucode-drfapishare-rxgp524om7j.ws-eu105.gitpod.io']
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST'), 'localhost']
 
 
 # Application definition
@@ -144,14 +144,14 @@ WSGI_APPLICATION = 'drf_api_share.wsgi.application'
 
 
 
-#if 'DEV' in os.environ:
- #   DATABASES = {
- #       'default': {
-   #         'ENGINE': 'django.db.backends.sqlite3',
-   #         'NAME': BASE_DIR / 'db.sqlite3',
-    #     }
-    # }
-#else:
+if 'DEV' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+         }
+     }
+else:
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
