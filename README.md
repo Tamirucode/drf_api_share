@@ -27,31 +27,26 @@ Now I can test api using endpoints
 ![filter profile by owner part 2](https://github.com/Tamirucode/drf_api_share/assets/116649197/d02800fe-903c-4b72-9877-f3ed02e49829)
 
 
-## Below: Create to do list
+## Below: Create to do listL-  HTTP Response 201
 ![create to do list](https://github.com/Tamirucode/drf_api_share/assets/116649197/978921aa-d1c3-4cd4-8e4b-e65d7b4547c1)
-
-## Below: Update to do list
-![Annotation 2023-10-07 154827](https://github.com/Tamirucode/drf_api_share/assets/116649197/87b017e9-51e2-44ab-9ecb-e13697916e71)
-
 
 ## Below: Delete to do list
 ![delete todolistdetail](https://github.com/Tamirucode/drf_api_share/assets/116649197/db521fb5-82c3-4a02-a5e0-2399ef307c25)
 
-## Below: After delete confirm 204 no content
+## Below: After delete confirm  HTTP Response 204 no content
 ![after delete 204 no content](https://github.com/Tamirucode/drf_api_share/assets/116649197/dd08c7b5-98a8-4601-b38a-c56710c1697b)
 
-## Below: Test create todolist without filling the form and response
+## Below: Test create todolist without filling the form and response: HTTP Response 400
 ![test  create  todolist without filling the form  ](https://github.com/Tamirucode/drf_api_share/assets/116649197/a061161f-e601-482c-8505-1b2fd7831365)
 
-## Below: Test todolist duplicate
+## Below: Test todolist duplicate :- HTTP Response 400
 ![test todolist duplicte](https://github.com/Tamirucode/drf_api_share/assets/116649197/4f92f344-da17-45ea-a219-132466b2b5ba)
 
-## Below: Test create todolist without filling the form   
+## Below: Test create todolist without filling the form :-HTTP Response 400
 ![test  create  todolist without filling the form  ](https://github.com/Tamirucode/drf_api_share/assets/116649197/573a00db-7a35-4ef7-929e-684b9632dc5d)
 
-## Below: Filter  todolist by particula user 1
-![filter  todolist by particula user 1](https://github.com/Tamirucode/drf_api_share/assets/116649197/e84f7119-4a13-4602-8ae7-2d03aaec7c13)
-![filter  todo list by particula user 2](https://github.com/Tamirucode/drf_api_share/assets/116649197/150c02f7-f74d-40a5-9ea3-f59a874c0462)
+## Below: update blank title :-HTTP Response 404
+![update blank title, 404 page](https://github.com/Tamirucode/drf_api_share/assets/116649197/6feb7ed1-1af7-46b6-8e42-0df011da2206)
 
 ## Below: Search todolist by title name
 ![search by todolist title name](https://github.com/Tamirucode/drf_api_share/assets/116649197/a6a00574-f8ef-425b-baf4-8b247b87842d)
@@ -75,6 +70,10 @@ Now I can test api using endpoints
 ## Below: Todolist detail test user update list by their own 
 ![todolist detail test user update list by their own ](https://github.com/Tamirucode/drf_api_share/assets/116649197/15ee2657-8e57-4818-b157-757e2aca3e9f)
 
-## Below: 
+## Below: Todolist view test user can create post
+![todolist view test user can create post](https://github.com/Tamirucode/drf_api_share/assets/116649197/3737efd6-c115-485b-bd7c-085c8d8cc1dc)
+
+## Below: Todolist view test user not logged in can't create todolist
+![todolist view test user not logged in cant create todolist](https://github.com/Tamirucode/drf_api_share/assets/116649197/10750fa8-49cd-4375-9039-a1f617419d9a)
 
 
