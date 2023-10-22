@@ -36,7 +36,7 @@ Now I can test api using endpoints
 ## Below: After delete confirm  HTTP Response 204 no content
 ![after delete 204 no content](https://github.com/Tamirucode/drf_api_share/assets/116649197/dd08c7b5-98a8-4601-b38a-c56710c1697b)
 
-## Below: Test create todolist without filling the form and response: HTTP Response 400
+## Below: Create todolist without filling the form confirm: HTTP Response 400
 ![test  create  todolist without filling the form  ](https://github.com/Tamirucode/drf_api_share/assets/116649197/a061161f-e601-482c-8505-1b2fd7831365)
 
 ## Below: Test todolist duplicate :- HTTP Response 400
@@ -75,5 +75,45 @@ Now I can test api using endpoints
 
 ## Below: Todolist view test user not logged in can't create todolist
 ![todolist view test user not logged in cant create todolist](https://github.com/Tamirucode/drf_api_share/assets/116649197/10750fa8-49cd-4375-9039-a1f617419d9a)
+
+## Below: Created todoitem list 
+![created todoitem list](https://github.com/Tamirucode/drf_api_share/assets/116649197/f3c9a748-972a-469a-b4c9-1a3aaba31546)
+![created todoitemlist pat 2](https://github.com/Tamirucode/drf_api_share/assets/116649197/5821a869-5329-4584-89cb-6934db75cf13)
+
+## Below: Delete to do item 
+![delete to do item](https://github.com/Tamirucode/drf_api_share/assets/116649197/18187ed9-228d-4140-a1cf-6461215efa08)
+
+## Below: After delete show no content
+![after  delete  show  no content](https://github.com/Tamirucode/drf_api_share/assets/116649197/355aea23-f2c5-4d07-a18c-e1cf51c244a1)
+
+## Below: After  delete check todo item by id show  404
+![after  delete check todo item by id show  404](https://github.com/Tamirucode/drf_api_share/assets/116649197/33ee4073-da96-4e75-bda5-3e2bd23ad8ea)
+
+## Below: As loggedin user retrive todoitem by id
+![as loggdin user retrive todoitem by id](https://github.com/Tamirucode/drf_api_share/assets/116649197/9f0a1ca3-6f3f-4b5c-bb22-0457ff7fca53)
+![retrive todoitem  by id part 2](https://github.com/Tamirucode/drf_api_share/assets/116649197/571ab350-8f2a-48b7-807e-f47cc4eea5b8)
+
+## Below: Todo item update by id
+![todo item update by id](https://github.com/Tamirucode/drf_api_share/assets/116649197/034fd636-c126-4869-90cb-dea2acd03398)
+![todoitem update by id part 2](https://github.com/Tamirucode/drf_api_share/assets/116649197/1a3fc72e-f2a9-4e98-bdfe-2607f50a9bbe)
+
+## Below: Todoitem list view 
+![todoitem list](https://github.com/Tamirucode/drf_api_share/assets/116649197/9f63efb7-f3d3-431b-b856-4b75d528a893)
+![todoitemlist part 2](https://github.com/Tamirucode/drf_api_share/assets/116649197/7ade8d26-3f12-4c53-8794-f5871ce8d296)
+![todoitem list pat 3](https://github.com/Tamirucode/drf_api_share/assets/116649197/037a05b9-9c5f-4260-b1a2-971da9cd0c48)
+
+## Below: Search todoitem by title name
+![search by todoitem title name](https://github.com/Tamirucode/drf_api_share/assets/116649197/6cf5537e-79d6-451a-8793-d9de6d0cc11f)
+![search by todoitem title name section 2](https://github.com/Tamirucode/drf_api_share/assets/116649197/b0728520-974b-4747-b07a-16e82ab80fba)
+
+## Below: 
+
+
+
+
+
+
+
+
 
 
