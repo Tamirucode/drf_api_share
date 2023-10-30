@@ -149,13 +149,26 @@ Now I can test api using endpoints
 ![create to do list item not tobe blank title](https://github.com/Tamirucode/drf_api_share/assets/116649197/d296055b-3edb-458f-ac62-7f90a6a4d668)
 
 
+### After Deployment testing API endpoint by profiles :- it works as expected
+
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/7dea63cb-3edd-40f4-ae08-ccef993dc757)
+
+### After Deployment testing API endpoint by todolists :- it works as expected
+
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/d3f3caa7-06dc-4a61-892d-0fc72f3dc081)
+
+### After Deployment testing API endpoint by todoitems :- it works as expected
+
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/6a9c5429-3d0c-4cd0-9775-29823d5f780f)
+
+
 ## Technologies
 
   - Django REST Framework
 
 ## Deployment
 
-Here are the steps:-
+ - Here are the steps:-
 
 1. Postgres database  was created in Elephant SQL using  my project name:- drf_api_share
 
@@ -176,7 +189,6 @@ Here are the steps:-
 9. I added cloudinary url in the env.py file and into the Heroku Settings vars as well
 
 10. update the Databases section, I commented out the present code for databaes and  I added an if statement saying that outside the development environment the envirment variables must be used from env.py , includingthe secret key.
-
 
 11. In my env.py file, added a new environment variable  with the key set to Database_url, and the value to my elphantSQL database_url
 
@@ -201,7 +213,7 @@ Here are the steps:-
       
 ![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/3d14c74d-872d-4e94-a800-25756e17bb03)
 
-21. still setting.py file i added the code below in the above  code which enable sending cookies in cross-origin
+20. still setting.py file i added the code below in the above  code which enable sending cookies in cross-origin
      requests so that users can get authentication functionality
 	    
 ![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/915b3103-de6d-484c-b68e-3a28274eedad)
