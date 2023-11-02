@@ -62,7 +62,7 @@ DEBUG = 'DEBUG' in os.environ
 
 #ALLOWED_HOSTS = ['8000-tamirucode-drfapishare-rxgp524om7j.ws-eu105.gitpod.io']
 ALLOWED_HOSTS = [
-    os.environ.get('tamirucode-reacttodoite-emxh6ccmvq2.ws-eu105.gitpod.io'), 
+    os.environ.get('ALLOWED HOST'), 
     '8000-tamirucode-drfapishare-ik5cad6fhe7.ws-eu105.gitpod.io',
     
 ]
