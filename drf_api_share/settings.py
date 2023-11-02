@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-import re
+
 from pathlib import Path
 import os
 import dj_database_url
@@ -58,11 +58,21 @@ REST_AUTH_SERIALIZERS = {
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEBUG' in os.environ
 
 #ALLOWED_HOSTS = ['8000-tamirucode-drfapishare-rxgp524om7j.ws-eu105.gitpod.io']
-ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST'), 'localhost']
+ALLOWED_HOSTS = [
+    os.environ.get('tamirucode-reacttodoite-emxh6ccmvq2.ws-eu105.gitpod.io'), 
+    '8000-tamirucode-drfapishare-ik5cad6fhe7.ws-eu105.gitpod.io',
+    
+]
 
+CORS_ALLOWED_ORIGINS = [
+    os.environ.get('CLIENT_ORIGIN')
+     
+]
+
+CORS_ALLOWED_CREDNTIALS = True
 
 # Application definition
 
@@ -101,22 +111,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-#if 'CLIENT_ORIGIN' in os.environ:
-   #  CORS_ALLOWED_ORIGINS = [
-    #     os.environ.get('CLIENT_ORIGIN')
-     #]
-#else:
-    # CORS_ALLOWED_ORIGIN_REGEXES = [
-     #    r"^https://.*\.gitpod\.io$",
-    # ]
 
-if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
-    CORS_ALLOWED_ORIGIN_REGEXES = [
-        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
-    ]
 
-CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'drf_api_share.urls'
 
@@ -144,16 +140,16 @@ WSGI_APPLICATION = 'drf_api_share.wsgi.application'
 
 
 
-if 'DEV' in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-         }
-     }
-else:
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+#if 'DEV' in os.environ:
+  #  DATABASES = {
+   #     'default': {
+    #        'ENGINE': 'django.db.backends.sqlite3',
+     #       'NAME': BASE_DIR / 'db.sqlite3',
+     #    }
+     #}
+#else:
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
 #print('connected')
 

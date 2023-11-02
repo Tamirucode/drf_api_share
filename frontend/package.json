@@ -49,5 +49,5 @@
     "@types/react-router-dom": "^5.3.3",
     "msw": "^2.0.1"
   },
-  "proxy": "http://localhost:8000/"
+  "proxy": "https://8000-tamirucode-drfapishare-ik5cad6fhe7.ws-eu105.gitpod.io/"
 }
