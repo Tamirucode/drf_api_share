@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9d7da045.css",
+    "main.js": "/static/js/main.aef9c28b.js",
+    "static/js/787.e57daa63.chunk.js": "/static/js/787.e57daa63.chunk.js",
+    "static/media/logo todo.png": "/static/media/logo todo.6015dc7f547e957415d2.png",
+    "index.html": "/index.html",
+    "main.9d7da045.css.map": "/static/css/main.9d7da045.css.map",
+    "main.aef9c28b.js.map": "/static/js/main.aef9c28b.js.map",
+    "787.e57daa63.chunk.js.map": "/static/js/787.e57daa63.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9d7da045.css",
+    "static/js/main.aef9c28b.js"
+  ]
+}
