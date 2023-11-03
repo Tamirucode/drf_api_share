@@ -67,8 +67,10 @@ DEBUG = 'DEBUG' in os.environ
     
 #]
 
+ALLOWED_HOSTS =['8000-tamirucode-drfapishare-ik5cad6fhe7.ws-eu105.gitpod.io', 'drf-todo2023-76af1f9fdada.herokuapp.com']
 
-ALLOWED_HOSTS =['drf-todo2023-76af1f9fdada.herokuapp.com']
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 CORS_ALLOWED_ORIGINS = [
     os.environ.get('CLIENT_ORIGIN')
      
