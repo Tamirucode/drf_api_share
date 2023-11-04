@@ -1,11 +1,13 @@
 
 ## Overview
 
-Django to-do-list app using powerful and flexible toolkit django rest framework to build model-backed API for accessing users and groups. 
+In this project, I build a To-Do-List application using Django and React. 
+
+For this application, React serves as the frontend, or client-side framework, handling the user interface and getting and setting data via 
+
+requests to the Django backend, which is an API built using the Django REST framework (DRF).
 
 With django-to-do-list, user can create one todolist and multiple todoitem with due date. Users have option of modifying the todolist and todoitem.
-
-This API would support  usage from  my front-end applications.
 
 In this API I used three modle namely profile,  todolist, and todoitem
 
@@ -13,6 +15,12 @@ In this API I used three modle namely profile,  todolist, and todoitem
 
 ![model ppp5  a](https://github.com/Tamirucode/drf_api_share/assets/116649197/110e0480-aff0-4625-b4fe-73f1308f4d10)
 ![model ppp5 b](https://github.com/Tamirucode/drf_api_share/assets/116649197/93c1a0dd-5ea8-4307-93e9-b2aa50e6b906)
+
+- The code snippet above describes six properties on the profile model;
+- The code snippet above describes three properties on the Todolist model:
+- The code snippet above describes eight properties on the Todoitem model:
+
+I created profile, todolist and todoitem/serializers.py file  to convert model instances to JSON so that the frontend can work with the received data.
 
 
 ## Below: A live todolist app screenshot after depolyment
@@ -203,7 +211,6 @@ Now I can test api using endpoints
 		 python manage.py migrate
 16. I added the Heroku name followed by herokuapp.com to the ALLOWED_HOSTS variable name in setting.py followed by a comma and 'localhost' ( to allow running in the IDE)
 
-
 17. I added Corsheaders to installed apps in the setting.py file
 
 18. I added Corsheaders middleware to the top of the MIDDLEWARE in setting.py file
@@ -241,8 +248,17 @@ Now I can test api using endpoints
 
 33. When you see the message “deployed to Heroku” in the build log, click the “open app” button at the top of the page.
     
+## Credits
 
+  ##### Content
 
+   - The instructions how to implement class/generic view  were taken from drf_api walk through project
+
+   - Text home page explanation referenced from [DjangoRestFrameworkDocumentation](https://www.django-rest-framework.org/)
+   
+   - The content was created by the developer
+   
+ 
 
 
 
