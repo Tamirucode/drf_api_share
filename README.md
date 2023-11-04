@@ -17,16 +17,40 @@ In this API I used three modle namely profile,  todolist, and todoitem
 ![model ppp5 b](https://github.com/Tamirucode/drf_api_share/assets/116649197/93c1a0dd-5ea8-4307-93e9-b2aa50e6b906)
 
 - The code snippet above describes six properties on the profile model;
-- The code snippet above describes three properties on the Todolist model:
-- The code snippet above describes eight properties on the Todoitem model:
 
-I created profile, todolist and todoitem/serializers.py file  to convert model instances to JSON so that the frontend can work with the received data.
+   three properties on the Todolist model; eight properties on the Todoitem model.
 
+   Once I've set up a database and the initial user is created and ready to go
+
+### Serializers
+
+   - First up I defined some serializers for my data representations. I created profile, todolist and todoitem/serializers.py file  to convert
+
+      model instances to JSON so that the frontend can work with the received data.
+
+### Views
+
+   - I wrote views to model instances that receive a web request and return a web response. I implemented generic class-based list and detail
+
+     views of python objects.
+
+### Urls
+
+   - I wired up the API URLs, helps django url pattern that matches the requested url
+
+   - I included  login and logout views for use with the browsable API.
+
+### Pagination
+
+   - It allows how many profiles, todolists  and todoitems object per page are returned.
 
 ## Below: A live todolist app screenshot after depolyment
 
 ![ppp5 api  screen shot](https://github.com/Tamirucode/drf_api_share/assets/116649197/2ce2917f-0cd9-409e-b3a5-a4c1995c1cc9)
-Now I can test api using endpoints
+
+## Testing my API  
+ 
+ - using endpoints
 
 ## Below: A profile retrieve by id endpoint
 
@@ -169,6 +193,11 @@ Now I can test api using endpoints
 
 ![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/6a9c5429-3d0c-4cd0-9775-29823d5f780f)
 
+## Testing
+
+- PEP8			
+
+  	- No errors were returned from PEP8online.com
 
 ## Technologies
 
@@ -232,7 +261,7 @@ Now I can test api using endpoints
 
 23. I setted a NEW value for  SECRET_KEY environment variable in env.py
 
-24. Debug=True  in setting .py file
+24. Debug=False in setting .py file
 
 25. I commented DEV back in env.py file
 
