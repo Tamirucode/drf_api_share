@@ -58,7 +58,7 @@ REST_AUTH_SERIALIZERS = {
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEBUG' in os.environ
+DEBUG = False
 
 #ALLOWED_HOSTS = ['8000-tamirucode-drfapishare-rxgp524om7j.ws-eu105.gitpod.io']
 #ALLOWED_HOSTS = [
