@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+
 import dj_database_url
 
 if os.path.exists('env.py'):
@@ -58,23 +59,24 @@ REST_AUTH_SERIALIZERS = {
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = 'DEV' in os.environ
 
 #ALLOWED_HOSTS = ['8000-tamirucode-drfapishare-rxgp524om7j.ws-eu105.gitpod.io']
-#ALLOWED_HOSTS = [
-    #os.environ.get('ALLOWED HOST'), 
-  #  '8000-tamirucode-drfapishare-ik5cad6fhe7.ws-eu105.gitpod.io',
+ALLOWED_HOSTS = [
+    os.environ.get('ALLOWED_HOST'), 
+   '8000-tamirucode-drfapishare-nyh6wiadadb.ws-eu107.gitpod.io',
     
-#]
+]
 
-ALLOWED_HOSTS =['8000-tamirucode-drfapishare-ik5cad6fhe7.ws-eu105.gitpod.io', 'drf-todo2023-76af1f9fdada.herokuapp.com']
+#ALLOWED_HOSTS =['8000-tamirucode-drfapishare-nyh6wiadadb.ws-eu107.gitpod.io', 'drf-todo2023-76af1f9fdada.herokuapp.com']
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
+
 CORS_ALLOWED_ORIGINS = [
     os.environ.get('CLIENT_ORIGIN')
-     
-]
+     ]
+
 
 CORS_ALLOWED_CREDNTIALS = True
 
@@ -103,6 +105,7 @@ INSTALLED_APPS = [
     'profiles',
     'todolists',
     'todoitems',
+    'todoitempriorities',
 ]
 SITE_ID = 1
 MIDDLEWARE = [
@@ -147,10 +150,10 @@ WSGI_APPLICATION = 'drf_api_share.wsgi.application'
 
 #if 'DEV' in os.environ:
   #  DATABASES = {
-   #     'default': {
-    #        'ENGINE': 'django.db.backends.sqlite3',
-     #       'NAME': BASE_DIR / 'db.sqlite3',
-     #    }
+      #  'default': {
+         #  'ENGINE': 'django.db.backends.sqlite3',
+         #   'NAME': BASE_DIR / 'db.sqlite3',
+        #}
      #}
 #else:
 DATABASES = {

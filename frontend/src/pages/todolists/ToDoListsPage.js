@@ -60,12 +60,12 @@ function ToDoListsPage({ message, filter = "" }) {
         {hasLoaded ? (
           
              <>
-            {todolists.results.length ? (
+            {todolists?.results?.length ? (
               <InfiniteScroll
                 children={todolists.results.map((todolist) => (
                   <ToDoList key={todolist.id} {...todolist} setToDoLists={setToDoLists} />
                 ))}
-                dataLength={todolists.results.length}
+                dataLength={todolists?.results?.length}
                 loader={<Asset spinner />}
                 hasMore={!!todolists.next}
                 next={() => fetchMoreData(todolists, setToDoLists)}

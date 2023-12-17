@@ -19,7 +19,7 @@ class ToDoItem(models.Model):
     description = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     due_date = models.DateTimeField(default=one_week_hence)
-    priority = models.IntegerField(choices=((1, 'Low'),(2, 'Medium'), (3, 'High') ))
+    
     completed = models.BooleanField(default = False)
     
     
