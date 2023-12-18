@@ -20,7 +20,7 @@ class ToDoItemSerializer(serializers.ModelSerializer):
         model = ToDoItem
         fields = [
             'id', 'owner', 'is_owner', 'profile_id', 'profile_image',
-            'todolist', 'title', 'description', 'due_date', 'priority', 'completed',
+            'todolist', 'title', 'description', 'due_date', 'completed',
         ]
 
 

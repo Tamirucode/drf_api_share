@@ -32,7 +32,7 @@ urlpatterns = [
     path('api/', include('profiles.urls')),
     path('api/', include('todolists.urls')),
     path('api/', include('todoitems.urls')),
-
+    path('api/', include('todoitempriorities.urls')),
 
 ]
 

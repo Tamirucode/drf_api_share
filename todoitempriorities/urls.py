@@ -1,5 +1,8 @@
 from django.urls import path
-from todoitemPriorities import views
+from todoitempriorities import views
 
 urlpatterns = [
-    path('todoitemPriorities/', views.ToDoItemPriorityList.as_view()),
+    path('todoitempriorities/', views.ToDoItemPriorityList.as_view()),
+    path('todoitempriorities/<int:pk>/', views.ToDoItemPriorityDetail.as_view()),
+
+]
