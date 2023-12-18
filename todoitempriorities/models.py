@@ -15,7 +15,7 @@ class ToDoItemPriority(models.Model):
     
     created_at = models.DateTimeField(auto_now_add=True)
     
-    priority = models.IntegerField(choices=(('low','LOW'), ('medium','MEDIUM'), ('high','HIGH')) )
+    priority = models.CharField(choices=(('low','LOW'), ('medium','MEDIUM'), ('high','HIGH')), max_length=6 )
     
     class Meta:
         ordering = ['priority', 'created_at']
