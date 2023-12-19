@@ -7,8 +7,8 @@ import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import ToDoList from "./ToDoList";
 import ToDoItem from "../todoitems/ToDoItem";
-
-
+import ToDoItemCreateForm from "../todoitems/ToDoItemCreateForm";
+import ToDoItemEditForm from "../todoitems/ToDoItemEditForm";
 function ToDoListPage() {
   const { id } = useParams();
   const [todolist, setToDoList] = useState({ results: [] });
@@ -49,9 +49,26 @@ function ToDoListPage() {
        {todoitems.results.length === 0 && <h4>You have no todoitem in this list!</h4> }
        
         <li>
+        <div
+                        role="button"
+                        onClick={<ToDoItemEditForm />}
+                        to= "/todoitems/:id/edit"  >
         <ToDoItem />
+        </div>
         </li>
       </ul>
+      <p>
+            <input
+                value="Add a new item"
+                type="button"
+                to="/todoitems/"
+                onClick={<ToDoItemCreateForm/>}
+                />
+            <input
+                value="Delete this list"
+                type="button"
+                onClick="" />
+        </p>
         <Container className={appStyles.Title}>
          
         </Container>
