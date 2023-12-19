@@ -15,7 +15,7 @@ const ToDoItem = (props) => {
     profile_image,
     owner,
     description,
-    priority,
+    
     due_date,
     title,
     id,
@@ -66,7 +66,7 @@ const ToDoItem = (props) => {
         <Media.Body className="align-self-center ml-2">
           <span className={styles.Owner}>{owner}</span>
        
-        <p>{priority}. {title} Due {due_date} </p>
+        <p>{title} Due {due_date} </p>
        <p>{description} </p>  </Media.Body> 
         {is_owner && (
           <MoreDropdown

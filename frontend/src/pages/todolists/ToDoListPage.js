@@ -7,25 +7,25 @@ import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import ToDoList from "./ToDoList";
 import ToDoItem from "../todoitems/ToDoItem";
-import ToDoItemCreateForm from "../todoitems/ToDoItemCreateForm";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
+
 
 function ToDoListPage() {
   const { id } = useParams();
   const [todolist, setToDoList] = useState({ results: [] });
-  const currentUser = useCurrentUser();
-  const profile_image = currentUser?.profile_image;
+  const [todolists, setToDoLists] = useState({ results: [] });
+  
   const [todoitems, setToDoItems] = useState({ results: [] });
-
+  
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: todolist }, { data: todoitems }] = await Promise.all([
+        const [{ data: todolist }, {data:todoitems}] = await Promise.all([
           axiosReq.get(`/todolists/${id}`),
-          axiosReq.get(`/todoitems/?todolist=${id}`),
+          axiosReq.get(`/todoitems/${id}`),
         ]);
         setToDoList({ results: [todolist] });
-        setToDoItems(todoitems);
+        setToDoItems({ results: [todoitems] });
+        setToDoLists({ results: [todolist] });
       } catch (err) {
         //console.log(err);
       }
@@ -37,34 +37,23 @@ function ToDoListPage() {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        
-        <ToDoList {...todolist.results[0]} setToDoLists={setToDoList} todolistPage />
+       {todolists.results.map((todolist) => (
+                  <ToDoList key={todolist.id} {...todolist}  />
+                ))}
+        {todolists.results.length === 0 && <h4>You have no todolists!</h4> }
+      
+        <ul>
+      {todoitems.results.map((todoitem) => (
+                  <ToDoItem key={todoitem.id} {...todoitem}  />
+                ))}
+       {todoitems.results.length === 0 && <h4>You have no todoitem in this list!</h4> }
+       
+        <li>
+        <ToDoItem />
+        </li>
+      </ul>
         <Container className={appStyles.Title}>
-          {currentUser ? (
-            <ToDoItemCreateForm
-              profile_id={currentUser.profile_id}
-              profile_image={profile_image}
-              todolist={id}
-              setToDoList={setToDoList}
-              setToDoItems={setToDoItems}
-            />
-          ) : todoitems.results.length ? (
-            "ToDoItems"
-          ) : null}
-          {todoitems.results.length ? (
-            todoitems.results.map((todoitem) => (
-              <ToDoItem
-                key={todoitem.id}
-                {...todoitem}
-                setToDoList={setToDoList}
-                setToDoItems={setToDoItems}
-              />
-            ))
-          ) : currentUser ? (
-            <span>No todoitem yet!</span>
-          ) : (
-            <span> add todoitem...</span>
-          )}
+         
         </Container>
       </Col>
       

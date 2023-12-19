@@ -20,12 +20,12 @@ function ToDoItemCreateForm(props) {
     title: "",
     description: "",
     due_date: "",
-    priority: "",
+   
     completed: "",
     
     
   });
-  const { todolist, title, description, due_date, priority, completed } = todoitemData;
+  const { todolist, title, description, due_date,  completed } = todoitemData;
   const history = useHistory();
 
   const handleChange = (event) => {
@@ -44,7 +44,7 @@ function ToDoItemCreateForm(props) {
     formData.append("title", title);
     formData.append("description",  description);
     formData.append("due_date", due_date);
-    formData.append("priority", priority);
+    
     formData.append("completed", completed);
 
     try {
@@ -113,20 +113,7 @@ function ToDoItemCreateForm(props) {
           {message}
         </Alert>
       ))}
-      <Form.Group>
-        <Form.Label>Priority</Form.Label>
-        <Form.Control
-          type="number"
-          name="priority"
-          value={priority}
-          onChange={handleChange}
-        />
-      </Form.Group>
-      {errors?.priority?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
+      
       <Form.Group>
         <Form.Label>Completed</Form.Label>
         <Form.Control

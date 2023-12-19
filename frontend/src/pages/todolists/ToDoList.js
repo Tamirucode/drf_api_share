@@ -44,7 +44,7 @@ const ToDoList = (props) => {
 <Media className="align-items-center justify-content-between">
           <Link to={`/profiles/${profile_id}`}>
             <Avatar src={profile_image} height={55} />
-            {owner}
+            <span className={styles.Owner}>{owner}</span>
           </Link>
          
           <h5>{title}</h5> 
@@ -58,6 +58,9 @@ const ToDoList = (props) => {
             )}
             
         </div> 
+
+      
+
       </Media>
     </Card>
   );
