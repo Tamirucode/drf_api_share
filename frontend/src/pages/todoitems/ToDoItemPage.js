@@ -5,17 +5,22 @@ import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import ToDoItem from "./ToDoItem";
 
+
 function ToDoItemPage() {
   const { id } = useParams();
   const [todoitem, setToDoItem] = useState({ results: [] });
-
+  const [todoitems, setToDoItems] = useState({ results: [] });
+  const [todolist, setToDoList] = useState({ results: [] });
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: todoitem }] = await Promise.all([
+        const [{ data: todoitem }, { data: todoitems }] = await Promise.all([
           axiosReq.get(`/todoitems/${id}`),
+          axiosReq.get(`/todolist/${id}`),
         ]);
         setToDoItem({ results: [todoitem] });
+        setToDoItems({ results: [todoitems] });
+        
         console.log(todoitem);
       } catch (err) {
         //console.log(err);
@@ -28,8 +33,17 @@ function ToDoItemPage() {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
+
+      <h5> {todolist.title}</h5> 
+      
+      {todoitems.results.map((todoitem) => (
+                  <ToDoItem key={todoitem.id} {...todoitem}  />
+                ))}
+       {todoitems.results.length === 0 && <h4>You have no todoitem in this list!</h4> }
+      
+      
        
-        <ToDoItem {...todoitem.results[0]} setToDoItems={setToDoItem} todoitemPage />
+        
         
       </Col>
       

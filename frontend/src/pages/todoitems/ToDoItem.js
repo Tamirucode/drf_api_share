@@ -1,9 +1,8 @@
 import React from "react";
-import { Media } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import Avatar from "../../components/Avatar";
+
+import styles from "../../styles/ul.module.css";
 import { MoreDropdown } from "../../components/MoreDropdown";
-import styles from "../../styles/ToDoItem.module.css";
+
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
@@ -11,8 +10,7 @@ import { useHistory } from "react-router-dom";
 const ToDoItem = (props) => {
   
   const {
-    profile_id,
-    profile_image,
+    
     owner,
     description,
     
@@ -58,23 +56,37 @@ const ToDoItem = (props) => {
   return (
     <div>
       <hr />
-      <Media>
-        <Link to={`/profiles/${profile_id}`}>
-           <Avatar src={profile_image} />
+      <ul className={styles.ul}>
+        
+        <li className={styles.ul}>
+        <div
+                        role="button"
+                        onClick={`/todoitems/?todolist=${id}`}
+                        to= "/todoitems/:id/edit"  >
+        <p>{title} (Due {due_date} )</p>
+        <p>{description} </p>
+        </div>
           
-           </Link>
-        <Media.Body className="align-self-center ml-2">
-          <span className={styles.Owner}>{owner}</span>
-       
-        <p>{title} Due {due_date} </p>
-       <p>{description} </p>  </Media.Body> 
+          </li> 
         {is_owner && (
           <MoreDropdown
           handleEdit={handleEdit}
           handleDelete={handleDelete}
         />
         )}
-      </Media>
+      </ul>
+      <p>
+            <input
+                value="Add a new item"
+                type="button"
+                to="/todoitems/"
+                onClick={`/todolist/${id}`}
+                />
+            <input
+                value="Delete this list"
+                type="button"
+                onClick={()=> handleDelete={handleDelete}}/>
+        </p>
     </div>
   );
 };

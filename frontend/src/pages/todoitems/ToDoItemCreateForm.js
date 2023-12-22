@@ -3,6 +3,7 @@ import Avatar from "../../components/Avatar";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
+import styles from "../../styles/ToDoList.module.css";
 import Col from "react-bootstrap/Col";
 import Alert from "react-bootstrap/Alert";
 import { ListGroup } from "react-bootstrap";
@@ -145,10 +146,11 @@ function ToDoItemCreateForm(props) {
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
-          <Link to={`/profiles/${profile_id}`}>
-            <Avatar src={profile_image} />
-            { owner}
+      <Link to={`/profiles/${profile_id}`}>
+            <Avatar src={profile_image} height={55} />
+            <span className={styles.Owner}>{owner}</span>
           </Link>
+         
         <Col md={{ span: 5, offset: 4 }}>
           <ListGroup className="mb-3">
           {textFields}

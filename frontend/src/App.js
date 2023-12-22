@@ -14,7 +14,7 @@ import { useCurrentUser } from "./contexts/CurrentUserContext";
 import ToDoListEditForm from "./pages/todolists/ToDoListEditForm";
 import ToDoItemEditForm from "./pages/todoitems/ToDoItemEditForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
-import ToDoItemsPage from  "./pages/todoitems/ToDoItemsPage";
+
 import NotFound from "./components/NotFound";
 function App() {
 const currentUser = useCurrentUser();
@@ -42,15 +42,7 @@ const profile_id = currentUser?.profile_id || "";
               />
             )}
           />
-          <Route
-            exact
-            path="/mytodoitem"
-            render={() => (
-              <ToDoItemsPage message="No results found. Adjust the search keyword."
-             
-              />
-            )}
-          />
+          
           
           
           <Route exact path="/signin" render={() => <SignInForm />} />
