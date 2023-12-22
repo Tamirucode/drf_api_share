@@ -7,12 +7,15 @@ import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import ToDoListCreateForm from "./pages/todolists/ToDoListCeateForm";
 import ToDoListPage from "./pages/todolists/ToDoListPage";
+import ToDoItemPriorityPage from "./pages/todoitempriorities/ToDoItemPriorityPage.js";
 import ToDoItemCreateForm from "./pages/todoitems/ToDoItemCreateForm";
+import ToDoItemPrioritySelectForm from "./pages/todoitempriorities/ToDoItemPrioritySelectForm";
 import ToDoItemPage from "./pages/todoitems/ToDoItemPage";
 import ToDoListsPage from "./pages/todolists/ToDoListsPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import ToDoListEditForm from "./pages/todolists/ToDoListEditForm";
 import ToDoItemEditForm from "./pages/todoitems/ToDoItemEditForm";
+import ToDoItemPriorityEditSelectForm from "./pages/todoitempriorities/ToDoItemPriorityEditSelectForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
 
 import NotFound from "./components/NotFound";
@@ -47,12 +50,15 @@ const profile_id = currentUser?.profile_id || "";
           
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
+          <Route exact path="/todoitempriorities/" render={() => <ToDoItemPrioritySelectForm />} />
+          <Route exact path="/todoitempriorities/:id" render={() => <ToDoItemPriorityPage />} />
           <Route exact path="/todolists/" render={() => <ToDoListCreateForm />} />
           <Route exact path="/todolists/:id" render={() => <ToDoListPage />} />
           <Route exact path="/todoitems/" render={() => <ToDoItemCreateForm />} />
           <Route exact path="/todoitems/:id" render={() => <ToDoItemPage />} />
           <Route exact path="/todolists/:id/edit" render={() => <ToDoListEditForm />} />
           <Route exact path="/todoitems/:id/edit" render={() => <ToDoItemEditForm />} />
+          <Route exact path="/todoitempriorities/:id/edit" render={() => <ToDoItemPriorityEditSelectForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
           <Route render={() => <NotFound />} />
         </Switch>

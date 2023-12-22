@@ -1,19 +1,15 @@
-import React, { useState } from "react";
-import Avatar from "../../components/Avatar";
+import React, {  useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
-import styles from "../../styles/ToDoList.module.css";
 import Col from "react-bootstrap/Col";
 import Alert from "react-bootstrap/Alert";
 import { ListGroup } from "react-bootstrap";
 import btnStyles from "../../styles/Button.module.css";
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
-import { Link } from "react-router-dom";
 
-function ToDoItemPrioritySelectForm(props) {
-  const { profile_image, profile_id , owner} = props;
+function ToDoItemPriorityEditSelectForm () {
   const [errors, setErrors] = useState({});
 
   const [todoitempriorityData, setToDoItemPriorityData] = useState({
@@ -22,8 +18,25 @@ function ToDoItemPrioritySelectForm(props) {
     
     
   });
-  const { todoitem, priority } = todoitempriorityData;
+  const { todoitem, priority} = todoitempriorityData;
+
   const history = useHistory();
+  const { id } = useParams();
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await axiosReq.get(`/todoitempriorities/${id}/`);
+        const {  owner, todoitem, priority} = data;
+
+        owner ? setToDoItemPriorityData({todoitem,priority }) : history.push("/");
+      } catch (err) {
+       // console.log(err);
+      }
+    };
+
+    handleMount();
+  }, [history, id]);
+
 
   const handleChange = (event) => {
     setToDoItemPriorityData({
@@ -37,27 +50,27 @@ function ToDoItemPrioritySelectForm(props) {
     event.preventDefault();
     const formData = new FormData();
 
-    formData.append("todoitem", todoitem,);
+    formData.append("todoitem", todoitem);
     formData.append("priority", priority);
     
-
     try {
-      const { data } = await axiosReq.post("/todoitempriorities/", formData);
-      history.push(`/todoitempriorities/${data.id}`);
-      
-      } catch (err) {
-      //console.log(err);
-      if (err.response?.status !== 401) {
-        setErrors(err.response?.data);
-      }
-    }
-  };
+        await axiosReq.put(`/todoitempriorities/${id}/`, formData);
+         history.push(`/todoitempriorities/${id}`);
+       } catch (err) {
+         //console.log(err);
+         if (err.response?.status !== 401) {
+           setErrors(err.response?.data);
+         }
+       }
+     };
+   
 
   const textFields = (
     <div className="text-center">
       <Form.Group>
         <Form.Label>ToDoItem</Form.Label>
         <Form.Control
+          
           name="todoitem"
           value={todoitem}
           placeholder='This is a pk value'
@@ -72,18 +85,21 @@ function ToDoItemPrioritySelectForm(props) {
     <Form.Group>
         <Form.Label>Priority</Form.Label>
         <Form.Control
-          type="priority"
+          
           name="priority"
           value={priority}
+          
           onChange={handleChange}
         />
+        
+          
+        
       </Form.Group>
       {errors?.priority?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
       ))}
-      
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => history.goBack()}
@@ -91,7 +107,7 @@ function ToDoItemPrioritySelectForm(props) {
         cancel
       </Button>
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        create
+        save
       </Button>
     </div>
   );
@@ -99,7 +115,6 @@ function ToDoItemPrioritySelectForm(props) {
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
-      
         <Col md={{ span: 5, offset: 4 }}>
           <ListGroup className="mb-3">
           {textFields}
@@ -110,4 +125,4 @@ function ToDoItemPrioritySelectForm(props) {
   );
 }
 
-export default ToDoItemPrioritySelectForm;
+export default ToDoItemPriorityEditSelectForm ;

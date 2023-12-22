@@ -4,7 +4,7 @@ import Row from "react-bootstrap/Row";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import ToDoItem from "./ToDoItem";
-
+import info from "../../styles/Info.module.css";
 
 function ToDoItemPage() {
   const { id } = useParams();
@@ -39,7 +39,7 @@ function ToDoItemPage() {
       {todoitems.results.map((todoitem) => (
                   <ToDoItem key={todoitem.id} {...todoitem}  />
                 ))}
-       {todoitems.results.length === 0 && <h4>You have no todoitem in this list!</h4> }
+       {todoitems.results.length === 0 && <h4 className={info.Heading}>You have no todoitem in this list!</h4> }
       
       
        
