@@ -60,7 +60,7 @@ function ToDoItemPrioritySelectForm(props) {
         <Form.Control
           name="todoitem"
           value={todoitem}
-          placeholder='This is a pk value'
+          
           onChange={handleChange}
         />
       </Form.Group>

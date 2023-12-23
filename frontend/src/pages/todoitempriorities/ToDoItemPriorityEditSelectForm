@@ -73,7 +73,7 @@ function ToDoItemPriorityEditSelectForm () {
           
           name="todoitem"
           value={todoitem}
-          placeholder='This is a pk value'
+          
           onChange={handleChange}
         />
       </Form.Group>

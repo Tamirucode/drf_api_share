@@ -13,7 +13,7 @@ const ToDoItem = (props) => {
     
     owner,
     description,
-    
+    todolist,
     due_date,
     title,
     id,
@@ -67,13 +67,14 @@ const ToDoItem = (props) => {
         <p>{description} </p>
         </div>
           
-          </li> 
+          
         {is_owner && (
           <MoreDropdown
           handleEdit={handleEdit}
           handleDelete={handleDelete}
         />
         )}
+        </li> 
       </ul>
       <p>
             <input

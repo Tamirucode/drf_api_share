@@ -7,7 +7,10 @@ import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
-
+import ToDoItemPage from "../../pages/todoitems/ToDoItemPage";
+import ToDoListCreateForm from "../../pages/todolists/ToDoListCeateForm";
+import btnStyles from "../../styles/Button.module.css";
+import Button from "react-bootstrap/Button";
 const ToDoList = (props) => {
   const {
     id,
@@ -46,7 +49,9 @@ const ToDoList = (props) => {
             <Avatar src={profile_image} height={55} />
             <span className={styles.Owner}>{owner}</span>
           </Link>
-         
+         <ul>
+          <li>
+            <diV onClick={()=>{<ToDoItemPage />}}>
           <h5>{title}</h5> 
         <div className="d-flex align-items-center">
           <span>{created_at}</span>
@@ -56,11 +61,18 @@ const ToDoList = (props) => {
                 handleDelete={handleDelete}
               />
             )}
-            
-        </div> 
-
-      
-
+           
+        </div>
+        </diV> 
+        </li>
+        </ul>
+        
+    <Button
+        className={`${btnStyles.Button} ${btnStyles.Blue}`}
+        onClick={() => {<ToDoListCreateForm />}}
+      >
+        Add a new Todolist
+      </Button>
       </Media>
     </Card>
   );

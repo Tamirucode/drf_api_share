@@ -67,7 +67,7 @@ function ToDoItemCreateForm(props) {
         <Form.Control
           name="todolist"
           value={todolist}
-          placeholder='This is a pk value'
+          
           onChange={handleChange}
         />
       </Form.Group>
