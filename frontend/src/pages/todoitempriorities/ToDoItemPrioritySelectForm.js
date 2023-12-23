@@ -16,29 +16,27 @@ function ToDoItemPrioritySelectForm(props) {
   const { profile_image, profile_id , owner} = props;
   const [errors, setErrors] = useState({});
 
-  const [todoitempriorityData, setToDoItemPriorityData] = useState({
-    todoitem: "",
-    priority: "",
-    
-    
-  });
-  const { todoitem, priority } = todoitempriorityData;
+  const [todoitems, setToDoItems] = useState([]);
+  
+  const [priority, setSelectedPriority] = useState("high");
+  const [todoitem, setSelectedToDoItem] = useState('');
+ 
   const history = useHistory();
 
   const handleChange = (event) => {
-    setToDoItemPriorityData({
-      ...todoitempriorityData,
-      [event.target.name]: event.target.value,
-    });
+    setSelectedToDoItem
+      (event.target.value);
   };
-
+  const handlePriorityChange = (event) => {
+    setSelectedPriority(event.target.value);
+  };
   
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
 
-    formData.append("todoitem", todoitem,);
     formData.append("priority", priority);
+    formData.append("todoitem", todoitem);
     
 
     try {
@@ -54,7 +52,10 @@ function ToDoItemPrioritySelectForm(props) {
   };
 
   const textFields = (
+    <>
+    
     <div className="text-center">
+    
       <Form.Group>
         <Form.Label>ToDoItem</Form.Label>
         <Form.Control
@@ -69,21 +70,20 @@ function ToDoItemPrioritySelectForm(props) {
           {message}
         </Alert>
       ))}
-    <Form.Group>
-        <Form.Label>Priority</Form.Label>
-        <Form.Control
-          type="priority"
-          name="priority"
-          value={priority}
-          onChange={handleChange}
-        />
-      </Form.Group>
-      {errors?.priority?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
-      
+   
+   
+  
+          <select
+            value={priority}
+            onChange={handlePriorityChange}
+            className="w-full border rounded p-2"
+          >
+            <option value="High">High Priority</option>
+            <option value="Medium">Medium Priority</option>
+            <option value="Low">Low Priority</option>
+          </select>
+        
+     
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => history.goBack()}
@@ -91,9 +91,11 @@ function ToDoItemPrioritySelectForm(props) {
         cancel
       </Button>
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        create
+        change priority
       </Button>
-    </div>
+   
+      </div>
+    </>
   );
 
   return (
