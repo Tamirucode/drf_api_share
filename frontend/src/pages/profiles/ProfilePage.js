@@ -23,7 +23,7 @@ import ToDoList from "../todolists/ToDoList";
 import ToDoItem from "../todoitems/ToDoItem";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
-//import { ProfileEditDropdown } from "../../components/MoreDropdown";
+import { ProfileEditDropdown } from "../../components/MoreDropdown";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
