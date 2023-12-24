@@ -13,10 +13,7 @@ import appStyles from "../../App.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
-import {
-  useProfileData,
-  useSetProfileData,
-} from "../../contexts/ProfileDataContext";
+
 import { Image } from "react-bootstrap";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ToDoList from "../todolists/ToDoList";
@@ -29,12 +26,16 @@ function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [profileTodolists, setProfileTodolists] = useState({ results: [] });
   const [profileTodoitems, setProfileTodoitems] = useState({ results: [] });
-
+  const [profileData, setProfileData] = useState({
+    // we will use the pageProfile later!
+    pageProfile: { results: [] },
+    
+  });
   const currentUser = useCurrentUser();
   const { id } = useParams();
 
-  const { setProfileData} = useSetProfileData();
-  const { pageProfile } = useProfileData();
+  
+  const { pageProfile } = profileData;
 
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;

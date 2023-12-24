@@ -37,7 +37,7 @@ function ToDoListPage() {
     <Row >
       <Col className="py-2 p-0 p-lg-2" lg={8}>
       {todolists.results.length > 0 && <h3>All My todolists!</h3> }
-      {todolists.results.length > 0 && <h3>All My todolists!</h3> }
+      
        {todolists.results.map((todolist) => (
                   <ToDoList key={todolist.id} {...todolist}  />
                 ))}

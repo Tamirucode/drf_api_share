@@ -40,11 +40,9 @@ const ToDoItemPriority = (props) => {
 
   return (
 
-    <Card className={styles.ToDoList}>
-    
-<Media className="align-items-center justify-content-between">
+   <>
           
-          <h5>{todoitem} {priority}</h5> 
+          <h5  className="w-full border rounded p-2"> {priority}</h5> 
         <div className="d-flex align-items-center">
          
           {is_owner && (
@@ -58,9 +56,7 @@ const ToDoItemPriority = (props) => {
 
       
 
-      </Media>
-    </Card>
-  );
-};
-
+        </>
+  )
+}
 export default ToDoItemPriority;

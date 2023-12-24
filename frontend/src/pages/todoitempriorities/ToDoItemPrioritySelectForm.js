@@ -71,8 +71,7 @@ function ToDoItemPrioritySelectForm(props) {
         </Alert>
       ))}
    
-   
-  
+   <Form.Group>
           <select
             value={priority}
             onChange={handlePriorityChange}
@@ -83,7 +82,8 @@ function ToDoItemPrioritySelectForm(props) {
             <option value="Low">Low Priority</option>
           </select>
         
-     
+          </Form.Group>
+  
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => history.goBack()}
@@ -91,7 +91,7 @@ function ToDoItemPrioritySelectForm(props) {
         cancel
       </Button>
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        change priority
+        create
       </Button>
    
       </div>

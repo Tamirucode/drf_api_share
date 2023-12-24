@@ -6,7 +6,7 @@ import { MoreDropdown } from "../../components/MoreDropdown";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
-
+import ToDoItemPriority from "../todoitempriorities/ToDoItemPriority"
 const ToDoItem = (props) => {
   
   const {
@@ -75,6 +75,7 @@ const ToDoItem = (props) => {
         />
         )}
         </li> 
+       {<ToDoItemPriority/>}
       </ul>
       <p>
             <input
@@ -83,10 +84,13 @@ const ToDoItem = (props) => {
                 to="/todoitems/"
                 onClick={`/todolist/${id}`}
                 />
-            <input
-                value="Delete this list"
+            
+              <input
+                value="Add Priority"
                 type="button"
-                onClick={()=> handleDelete={handleDelete}}/>
+                to="/todoitempriorities/"
+                onClick={`/todoitem/${id}`}
+                />
         </p>
     </div>
   );
