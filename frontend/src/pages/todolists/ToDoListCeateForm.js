@@ -67,7 +67,7 @@ function ToDoListCreateForm() {
         <Form.Label>Title</Form.Label>
         <Form.Control
           type="text"
-          name="title"
+         
           value={title}
           onChange={handleChange}
         />
@@ -85,19 +85,7 @@ function ToDoListCreateForm() {
         cancel
       </Button>
       <Button  onClick={notify} className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">create</Button>
-      <ToastContainer
-
-position="top-center"
-autoClose={2000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-theme="colored"
-/>
+      <ToastContainer/>
     </div>
   );
 

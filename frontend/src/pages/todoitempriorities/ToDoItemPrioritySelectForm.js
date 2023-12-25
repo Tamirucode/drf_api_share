@@ -59,9 +59,7 @@ function ToDoItemPrioritySelectForm(props) {
       <Form.Group>
         <Form.Label>ToDoItem</Form.Label>
         <Form.Control
-          name="todoitem"
           value={todoitem}
-          
           onChange={handleChange}
         />
       </Form.Group>

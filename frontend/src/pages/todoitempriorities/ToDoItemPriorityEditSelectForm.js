@@ -17,9 +17,7 @@ function ToDoItemPriorityEditSelectForm(props) {
   const { profile_image, profile_id , owner} = props;
   const [errors, setErrors] = useState({});
 
-  const [todoitems, setToDoItems] = useState([]);
-  
-  const [priority, setSelectedPriority] = useState("High");
+  const [priority, setSelectedPriority] = useState("high");
   const [todoitem, setSelectedToDoItem] = useState('');
  
   
@@ -31,7 +29,8 @@ function ToDoItemPriorityEditSelectForm(props) {
         const { data } = await axiosReq.get(`/todoitempriorities/${id}/`);
         const {  owner, priority, todoitem} = data;
 
-        owner ? setSelectedToDoItem({todoitem}):setSelectedPriority({priority}) ; history.push("/");
+        owner ? setSelectedPriority(({priority}),setSelectedToDoItem({todoitem})):history.push("/");
+       
         
       } catch (err) {
        // console.log(err);
@@ -74,32 +73,26 @@ function ToDoItemPriorityEditSelectForm(props) {
       <Form.Group>
         <Form.Label>ToDoItem</Form.Label>
         <Form.Control
-          name="todoitem"
           value={todoitem}
-          
           onChange={handleChange}
         />
       </Form.Group>
-      <Form.Group>
-          <select value={priority}
-            onChange={handlePriorityChange} className="w-full border rounded p-2">
-            <option value='low'>Low Priority</option>
-            <option value='medium'>Medium Priority</option>
-            <option value='high'>High Priority</option>
-            </select>
-            </Form.Group>    
-     
       {errors?.todoitem?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
       ))}
-   
-     
-      <Button
+    <Form.Group>
+        <select value={priority}
+            onChange={handlePriorityChange} className ="w-full border rounded p-2">
+            <option value='low'>Low Priority</option>
+            <option value='medium'>Medium Priority</option>
+            <option value='high'>High Priority</option>
+        </select>
+    </Form.Group>    
+    <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => history.goBack()}
-      >
+        onClick={() => history.goBack()}>
         cancel
       </Button>
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">

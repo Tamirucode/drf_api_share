@@ -79,10 +79,8 @@ function ToDoItemEditForm() {
         <Form.Label>ToDoList</Form.Label>
         <Form.Control
           
-          name="todolist"
-          value={todolist}
-          placeholder='This is a pk value'
-          onChange={handleChange}
+         value={todolist}
+         onChange={handleChange}
         />
       </Form.Group>
       {errors?.todolist?.map((message, idx) => (

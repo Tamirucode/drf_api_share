@@ -11,6 +11,14 @@ import btnStyles from "../../styles/Button.module.css";
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { Link } from "react-router-dom";
+// Importing toastify module
+import { ToastContainer,toast } from "react-toastify";
+ 
+// Import toastify css file
+import "react-toastify/dist/ReactToastify.css";
+ 
+// toast-configuration method,
+// it is compulsory method.
 
 function ToDoItemCreateForm(props) {
   const { profile_image, profile_id , owner} = props;
@@ -35,7 +43,17 @@ function ToDoItemCreateForm(props) {
       [event.target.name]: event.target.value,
     });
   };
-
+  const notify = () => toast.success('Successfully add todoitem!', {
+    theme: "colored",
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    
+    });
   
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -65,9 +83,7 @@ function ToDoItemCreateForm(props) {
       <Form.Group>
         <Form.Label>ToDoList</Form.Label>
         <Form.Control
-          name="todolist"
           value={todolist}
-          
           onChange={handleChange}
         />
       </Form.Group>
@@ -137,9 +153,10 @@ function ToDoItemCreateForm(props) {
       >
         cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+      <Button onClick = {notify} className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
         create
       </Button>
+      <ToastContainer/>
     </div>
   );
 
