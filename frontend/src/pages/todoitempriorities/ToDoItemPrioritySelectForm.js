@@ -1,22 +1,29 @@
 import React, { useState } from "react";
-import Avatar from "../../components/Avatar";
+
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
-import styles from "../../styles/ToDoList.module.css";
+
 import Col from "react-bootstrap/Col";
 import Alert from "react-bootstrap/Alert";
 import { ListGroup } from "react-bootstrap";
 import btnStyles from "../../styles/Button.module.css";
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
-import { Link } from "react-router-dom";
+// Importing toastify module
+import { ToastContainer,toast } from "react-toastify";
+ 
+// Import toastify css file
+import "react-toastify/dist/ReactToastify.css";
+ 
+// toast-configuration method,
+// it is compulsory method.
 
-function ToDoItemPrioritySelectForm(props) {
-  const { profile_image, profile_id , owner} = props;
+function ToDoItemPrioritySelectForm() {
+  
   const [errors, setErrors] = useState({});
 
-  const [todoitems, setToDoItems] = useState([]);
+ 
   
   const [priority, setSelectedPriority] = useState("high");
   const [todoitem, setSelectedToDoItem] = useState('');
@@ -30,7 +37,17 @@ function ToDoItemPrioritySelectForm(props) {
   const handlePriorityChange = (event) => {
     setSelectedPriority(event.target.value);
   };
-  
+  const notify = () => toast.success('Successfully add todoitemprirority!', {
+    theme: "colored",
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    
+    });
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -88,10 +105,10 @@ function ToDoItemPrioritySelectForm(props) {
       >
         cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+      <Button onClick={notify} className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
         create
       </Button>
-   
+      <ToastContainer/>
       </div>
     </>
   );

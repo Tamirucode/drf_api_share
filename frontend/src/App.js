@@ -17,6 +17,7 @@ import ToDoListEditForm from "./pages/todolists/ToDoListEditForm";
 import ToDoItemEditForm from "./pages/todoitems/ToDoItemEditForm";
 import ToDoItemPriorityEditSelectForm from "./pages/todoitempriorities/ToDoItemPriorityEditSelectForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
+import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 
 import NotFound from "./components/NotFound";
 function App() {
@@ -60,6 +61,7 @@ const profile_id = currentUser?.profile_id || "";
           <Route exact path="/todoitems/:id/edit" render={() => <ToDoItemEditForm />} />
           <Route exact path="/todoitempriorities/:id/edit" render={() => <ToDoItemPriorityEditSelectForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+          <Route exact path="/profiles/:id/edit" render={() => <ProfileEditForm />} />
           <Route render={() => <NotFound />} />
         </Switch>
       </Container>

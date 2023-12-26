@@ -1,20 +1,20 @@
 
 import React, { useState, useEffect } from "react";
-import Avatar from "../../components/Avatar";
+
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
-import styles from "../../styles/ToDoList.module.css";
+
 import Col from "react-bootstrap/Col";
 import Alert from "react-bootstrap/Alert";
 import { ListGroup } from "react-bootstrap";
 import btnStyles from "../../styles/Button.module.css";
 import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
-import { Link } from "react-router-dom";
 
-function ToDoItemPriorityEditSelectForm(props) {
-  const { profile_image, profile_id , owner} = props;
+
+function ToDoItemPriorityEditSelectForm() {
+  
   const [errors, setErrors] = useState({});
 
   const [priority, setSelectedPriority] = useState("high");

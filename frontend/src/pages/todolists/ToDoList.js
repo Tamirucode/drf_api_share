@@ -58,12 +58,16 @@ const ToDoList = (props) => {
           {is_owner && (
               <MoreDropdown
                 handleEdit={handleEdit}
-                handleDelete={handleDelete=() => {
-                  window.alert(
-                    `Press Sure Wan't Delete ${title} `
+                handleDelete={ handleDelete
+                 ( window.alert(
+                    `<p>Are you sure you want to delete the list ${title}</p>?`
                   )
                   
-                }}
+                 )
+                }
+
+                 
+                
               />
             )}
            

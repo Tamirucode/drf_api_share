@@ -47,9 +47,19 @@ const ToDoItemPriority = (props) => {
          
           {is_owner && (
               <MoreDropdown
-                handleEdit={handleEdit}
-                handleDelete={handleDelete}
-              />
+              handleEdit={handleEdit}
+              handleDelete={ handleDelete
+               ( window.alert(
+                `<p>Are you sure you want to delete the: <b>{priority}priority</b>
+                from the todoitem <i>{todoitem.title}</i></p>?`
+                )
+                
+               )
+              }
+
+               
+              
+            />
             )}
             
         </div> 
