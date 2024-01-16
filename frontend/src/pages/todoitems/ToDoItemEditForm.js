@@ -11,19 +11,17 @@ import { axiosReq } from "../../api/axiosDefaults";
 
 function ToDoItemEditForm() {
   const [errors, setErrors] = useState({});
-
   const [todoitemData, setToDoItemData] = useState({
     todolist: "",
     title: "",
     description: "",
     due_date: "",
-   
     completed: "",
-    
-    
+  
   });
+  
   const { todolist, title, description, due_date,  completed } = todoitemData;
-
+  const [todoListItems, setTodoListItems] = useState([]);
   const history = useHistory();
   const { id } = useParams();
   useEffect(() => {
@@ -31,8 +29,8 @@ function ToDoItemEditForm() {
       try {
         const { data } = await axiosReq.get(`/todoitems/${id}/`);
         const {  is_owner, todolist, title, description, due_date,  completed } = data;
-
         is_owner ? setToDoItemData({todolist, title, description, due_date,  completed }) : history.push("/");
+        
       } catch (err) {
        // console.log(err);
       }
@@ -41,7 +39,20 @@ function ToDoItemEditForm() {
     handleMount();
   }, [history, id]);
 
-
+  useEffect(() => {
+    const fetchTodoListItems = async () => {
+      try {
+        const { data } = await axiosReq.get(`/todolists/`);
+        console.log(data)
+        setTodoListItems(data.results);
+      } catch (error) {
+        console.error("Error fetching TodoList items:", error);
+      }
+    };
+  
+    fetchTodoListItems();
+  }, [id]);
+  
   const handleChange = (event) => {
     setToDoItemData({
       ...todoitemData,
@@ -78,10 +89,18 @@ function ToDoItemEditForm() {
       <Form.Group>
         <Form.Label>ToDoList</Form.Label>
         <Form.Control
-          
+          as='select'
+         name ='todolist' 
          value={todolist}
          onChange={handleChange}
-        />
+        >
+          <option value=''>Select a TodoList</option>
+          {todoListItems.map((item) => (
+            <option key={item.id} value={item.id}>
+              {item.title}
+            </option>
+          ))}
+        </Form.Control>
       </Form.Group>
       {errors?.todolist?.map((message, idx) => (
         <Alert variant="warning" key={idx}>

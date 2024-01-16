@@ -13,9 +13,10 @@ import { useLocation } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import NoResults from "../../assets/no-results.png";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-
+import { Link, useHistory } from "react-router-dom";
 function ToDoListsPage({ message, filter = "" }) {
   const [todolists, setToDoLists] = useState({ results: [] });
+  const [todoitems, setToDoItems] = useState({ results: [] });
   const currentUser = useCurrentUser();
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
@@ -24,7 +25,9 @@ function ToDoListsPage({ message, filter = "" }) {
     const fetchToDoLists = async () => {
       try {
         const { data } = await axiosReq.get(`/todolists/?${filter}search=${query}`);
+        
         setToDoLists(data);
+        
         setHasLoaded(true);
       } catch (err) {
         //console.log(err);
@@ -60,29 +63,29 @@ function ToDoListsPage({ message, filter = "" }) {
         {hasLoaded ? (
           
              <>
-            {todolists?.results?.length ? (
+           
+            {todolists.results.length ? (
               <InfiniteScroll
                 children={todolists.results.map((todolist) => (
                   <ToDoList key={todolist.id} {...todolist} setToDoLists={setToDoLists} />
                 ))}
-                dataLength={todolists?.results?.length}
+                dataLength={todolists.results.length}
                 loader={<Asset spinner />}
                 hasMore={!!todolists.next}
                 next={() => fetchMoreData(todolists, setToDoLists)}
               />
-           
-            ): (
-              <Container className={appStyles.Title}>
+            ) : (
+              <Container className={appStyles.Content}>
                 <Asset src={NoResults} message={message} />
               </Container>
             )}
-
           </>
         ) : (
-          <Container className={appStyles.Title}>
+          <Container className={appStyles.Content}>
             <Asset spinner />
           </Container>
         )}
+        
       </Col>
       
     </Row>

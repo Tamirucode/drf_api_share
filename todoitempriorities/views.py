@@ -1,5 +1,4 @@
 from rest_framework import generics, permissions
-
 from drf_api_share.permissions import IsOwnerOrReadOnly
 from .models import ToDoItemPriority
 from .serializers import ToDoItemPrioritySerializer
@@ -19,6 +18,7 @@ class ToDoItemPriorityList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
+    
 
 class ToDoItemPriorityDetail(generics.RetrieveUpdateDestroyAPIView):
     """

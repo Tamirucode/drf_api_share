@@ -7,10 +7,8 @@ import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
-import ToDoItemPage from "../../pages/todoitems/ToDoItemPage";
-import ToDoListCreateForm from "../../pages/todolists/ToDoListCeateForm";
-import btnStyles from "../../styles/Button.module.css";
-import Button from "react-bootstrap/Button";
+import ToDoItem from "../todoitems/ToDoItem";
+import ToDoListPage from "./ToDoList";
 const ToDoList = (props) => {
   const {
     id,
@@ -22,6 +20,7 @@ const ToDoList = (props) => {
     
   } = props;
 
+  
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
@@ -40,8 +39,10 @@ const ToDoList = (props) => {
     }
   };
 
-  return (
+  
 
+  return (
+<>
     <Card className={styles.ToDoList}>
     
 <Media className="align-items-center justify-content-between">
@@ -49,41 +50,26 @@ const ToDoList = (props) => {
             <Avatar src={profile_image} height={55} />
             <span className={styles.Owner}>{owner}</span>
           </Link>
-         <ul>
-          <li>
-            <diV onClick={()=>{<ToDoItemPage />}}>
-          <h5>{title}</h5> 
+          
+        <Link to='/todoitems'> <h3>{title}</h3></Link>
+         
         <div className="d-flex align-items-center">
-          <span>{created_at}</span>
+        <h3> <span>{created_at}</span></h3>
           {is_owner && (
               <MoreDropdown
                 handleEdit={handleEdit}
-                handleDelete={ handleDelete
-                 ( window.alert(
-                    `<p>Are you sure you want to delete the list ${title}</p>?`
-                  )
-                  
-                 )
-                }
-
-                 
-                
+                handleDelete={handleDelete}
+               
               />
             )}
-           
-        </div>
-        </diV> 
-        </li>
-        </ul>
-        
-    <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => {<ToDoListCreateForm />}}
-      >
-        Add a new Todolist
-      </Button>
+            
+        </div> 
+       
       </Media>
+     
     </Card>
+ 
+ </>
   );
 };
 

@@ -40,31 +40,24 @@ const ToDoItemPriority = (props) => {
 
   return (
 
-   <>
+        <>
+        <Media>
+   <Media.Body className="align-self-center ml-2">
           
-          <h5  className="w-full border rounded p-2"> {priority}</h5> 
-        <div className="d-flex align-items-center">
-         
-          {is_owner && (
+          
+    <p> {priority} priority </p> </Media.Body>
+    <div className="d-flex align-items-center">
+         {is_owner && (
               <MoreDropdown
               handleEdit={handleEdit}
               handleDelete={ handleDelete
-               ( window.alert(
-                `<p>Are you sure you want to delete the: <b>{priority}priority</b>
-                from the todoitem <i>{todoitem.title}</i></p>?`
-                )
-                
-               )
-              }
-
                
-              
-            />
+              }/>
             )}
             
         </div> 
 
-      
+        </Media>
 
         </>
   )

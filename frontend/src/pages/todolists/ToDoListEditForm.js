@@ -63,8 +63,8 @@ function ToDoListEditForm() {
       <Form.Group>
         <Form.Label>Title</Form.Label>
         <Form.Control
-          type="text"
-         
+          
+          name="title"
           value={title}
           onChange={handleChange}
         />

@@ -16,10 +16,9 @@ import { axiosReq } from "../../api/axiosDefaults";
 function ToDoItemPriorityEditSelectForm() {
   
   const [errors, setErrors] = useState({});
-
   const [priority, setSelectedPriority] = useState("high");
   const [todoitem, setSelectedToDoItem] = useState('');
- 
+  const [todoItems, setToDoItems] = useState([]);
   
   const history = useHistory();
   const { id } = useParams();
@@ -27,9 +26,9 @@ function ToDoItemPriorityEditSelectForm() {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/todoitempriorities/${id}/`);
-        const {  owner, priority, todoitem} = data;
-
-        owner ? setSelectedPriority(({priority}),setSelectedToDoItem({todoitem})):history.push("/");
+        const {  owner,  todoitem, priority} = data;
+        owner ? setSelectedToDoItem(todoitem):history.push("/");
+        owner ? setSelectedPriority(priority):history.push("/");
        
         
       } catch (err) {
@@ -40,7 +39,19 @@ function ToDoItemPriorityEditSelectForm() {
     handleMount();
   }, [history, id]);
 
-
+  useEffect(() => {
+    const fetchTodoItems = async () => {
+      try {
+        const { data } = await axiosReq.get(`/todoitems/`);
+        console.log(data)
+        setToDoItems(data.results);
+      } catch (error) {
+        console.error("Error fetching Todoitems:", error);
+      }
+    };
+  
+    fetchTodoItems();
+  }, [id]);
   const handleChange = (event) => {
     setSelectedToDoItem
       (event.target.value);
@@ -73,9 +84,17 @@ function ToDoItemPriorityEditSelectForm() {
       <Form.Group>
         <Form.Label>ToDoItem</Form.Label>
         <Form.Control
+          as = 'select'
           value={todoitem}
           onChange={handleChange}
-        />
+        >
+        <option value=''>Select a Todoitem</option>
+        {todoItems.map((item) => (
+            <option key={item.id} value={item.id}>
+              {item.title}
+            </option>
+          ))}
+          </Form.Control>
       </Form.Group>
       {errors?.todoitem?.map((message, idx) => (
         <Alert variant="warning" key={idx}>

@@ -18,3 +18,9 @@ class ToDoItemPrioritySerializer(serializers.ModelSerializer):
             'profile_image', 'created_at','todoitem', 'priority',
         ]
 
+class ToDoItemPriorityDetailSerializer(ToDoItemPrioritySerializer):
+    """
+    Serializer for the ToDoItemPriority model used in Detail view
+    ToDoItem is a read only field so that we dont have to set it on each update
+    """
+    todoitem = serializers.ReadOnlyField(source='todoitem.id')

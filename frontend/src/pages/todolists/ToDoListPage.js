@@ -1,30 +1,34 @@
 import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import { Link, useHistory } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import appStyles from "../../App.module.css";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import ToDoList from "./ToDoList";
-import info from "../../styles/Info.module.css";
+import ToDoItemPage from "../todoitems/ToDoItem";
+import ToDoItemCreateForm from "../todoitems/ToDoItemCreateForm";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+
 
 function ToDoListPage() {
   const { id } = useParams();
   const [todolist, setToDoList] = useState({ results: [] });
+  const currentUser = useCurrentUser();
+  const profile_image = currentUser?.profile_image;
+ 
   const [todolists, setToDoLists] = useState({ results: [] });
-  
-  const [todoitems, setToDoItems] = useState({ results: [] });
-  
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: todolist }, {data:todoitems}] = await Promise.all([
+        const [{ data: todolist },{ data: todolists }] = await Promise.all([
           axiosReq.get(`/todolists/${id}`),
-          axiosReq.get(`/todoitems/${id}`),
+          axiosReq.get(`/todoitems/?todolist=${id}`),
         ]);
         setToDoList({ results: [todolist] });
-        setToDoItems({ results: [todoitems] });
-        setToDoLists({ results: [todolist] });
+        
+        setToDoLists(todolists);
       } catch (err) {
         //console.log(err);
       }
@@ -34,18 +38,12 @@ function ToDoListPage() {
   }, [id]);
 
   return (
-    <Row >
+    <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-      {todolists.results.length > 0 && <h3>All My todolists!</h3> }
-      
-       {todolists.results.map((todolist) => (
-                  <ToDoList key={todolist.id} {...todolist}  />
-                ))}
-        {todolists.results.length === 0 && <h4 className={info.Heading}>You have no todolists!</h4> }
-      
-      
+      <ToDoList key={todolist.id} {...todolist.results[0]} setToDoLists={setToDoList}  />
+       
         <Container className={appStyles.Title}>
-         
+       
         </Container>
       </Col>
       

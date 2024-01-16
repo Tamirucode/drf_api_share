@@ -9,9 +9,10 @@
     cursor: pointer;
     position: relative;
     padding: 12px 8px 12px 40px;
-    background: #eee;
+    background: #d5e0d9;
     font-size: 18px;
     transition: 0.2s;
+    margin-left: 20%;
     
   
     
@@ -22,7 +23,4 @@
     background: #f9f9f9;
   }
   
-  /* Darker background-color on hover */
-  .li:hover {
-    background: #fff;
-  }
+  

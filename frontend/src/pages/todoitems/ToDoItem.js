@@ -1,26 +1,33 @@
 import React from "react";
-
-import styles from "../../styles/ul.module.css";
+import { Media } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import { Link } from "react-router-dom";
+import Avatar from "../../components/Avatar";
 import { MoreDropdown } from "../../components/MoreDropdown";
-
+import styles from "../../styles/ToDoItem.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
-import ToDoItemPriority from "../todoitempriorities/ToDoItemPriority"
+import ToDoItemPriority from "../todoitempriorities/ToDoItemPriority";
+import ToDoItemPriorityPage from "../todoitempriorities/ToDoItemPriorityPage";
+
 const ToDoItem = (props) => {
   
   const {
-    
+    profile_id,
+    profile_image,
     owner,
     description,
-    todolist,
+    
     due_date,
     title,
     id,
     
   } = props;
+const{priority,handlePriorityChange}=ToDoItemPriority
 
-  const currentUser = useCurrentUser();
+ 
+ const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
   
@@ -39,6 +46,8 @@ const ToDoItem = (props) => {
     }
   };
 
+ 
+   
 
   
   //const ToggleToDoItem = id =>{
@@ -55,54 +64,27 @@ const ToDoItem = (props) => {
   
   return (
     <div>
-      <hr />
-      <ul className={styles.ul}>
-        
-        <li className={styles.ul}>
-        <div
-                        role="button"
-                        onClick={`/todoitems/?todolist=${id}`}
-                        to= "/todoitems/:id/edit"  >
-        <p>{title} (Due {due_date} )</p>
-        <p>{description} </p>
-        </div>
+      
+      <Media>
+        <Link to={`/profiles/${profile_id}`}>
+           <Avatar src={profile_image} />
           
+           </Link>
+        <Media.Body className="align-self-center ml-2">
           
+        <Link to={'/todoitempriorities'}>
+        <p> {title} Due {due_date} </p>
+       <p>{description} </p>  </Link> </Media.Body> 
         {is_owner && (
-           <MoreDropdown
-           handleEdit={handleEdit}
-           handleDelete={ handleDelete
-            ( window.alert(
-               `<p>Are you sure you want to delete the item: <b>{todoitem.title}</b>
-               from the list <i>{todolist.title}</i></p>?`
-             )
-             
-            )
-           }
-
-            
-           
-         />
+          <MoreDropdown
+          handleEdit={handleEdit}
+          handleDelete={handleDelete}
+        />
         )}
-        </li> 
-       {<ToDoItemPriority/>}
-      </ul>
-      <p>
-            <input
-                value="Add a new item"
-                type="button"
-                to="/todoitems/"
-                onClick={`/todolist/${id}`}
-                />
-            
-              <input
-                value="Add Priority"
-                type="button"
-                to="/todoitempriorities/"
-                onClick={`/todoitem/${id}`}
-                />
-        </p>
-    </div>
+        
+      </Media>
+      
+     </div>
   );
 };
 

@@ -10,24 +10,26 @@ import { axiosReq } from "../../api/axiosDefaults";
 
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import ToDoItemPriority from "./ToDoItemPriority";
+import ToDoItemPrioritySelectForm from "./ToDoItemPrioritySelectForm";
 
 function ToDoItemPriorityPage() {
   const { id } = useParams();
-  const [todoitem, setToDoItem] = useState({ results: [] });
-
+  
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
-  const [todoitempriorities, setToDoItemPriorities] = useState({ results: [] });
-
+  const [todoitempriority, setToDoItemPriority] = useState({ results: [] });
+  const [todoitems, setToDoItems] = useState({ results: [] });
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: todoitem }, { data: todoitempriorities }] = await Promise.all([
-          axiosReq.get(`/todoitems/${id}`),
-          axiosReq.get(`/todoitempriorities/?todoitem=${id}`),
+        const [{ data: todoitempriority},{ data: todoitems}] = await Promise.all([
+          axiosReq.get(`/todoitempriorities/${id}`),
+          axiosReq.get(`/todoitems/?todoitempriority=${id}`),
+          
         ]);
-        setToDoItem({ results: [todoitem] });
-        setToDoItemPriorities(todoitempriorities);
+        
+        setToDoItemPriority({ results: [todoitempriority]});
+        setToDoItems(todoitems);
       } catch (err) {
         console.log(err);
       }
@@ -40,13 +42,8 @@ function ToDoItemPriorityPage() {
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         
-       
-        <Container className={appStyles.Content}>
-        {todoitempriorities.results.map((todoitempriority) => (
-                  <ToDoItemPriority key={todoitempriority.id} {...todoitempriority}  />
-                ))}
-        {todoitempriorities.results.length === 0 && <h4 className={info.Heading}> You haven't yet prioritize your todoitem!</h4> }
-      
+       <Container className={appStyles.Content}>
+       <ToDoItemPriority {...todoitempriority.results[0]} setToDoItemPriorities={setToDoItemPriority}  />
         </Container>
       </Col>
       

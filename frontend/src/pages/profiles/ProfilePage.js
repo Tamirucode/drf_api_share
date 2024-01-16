@@ -18,6 +18,7 @@ import { Image } from "react-bootstrap";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ToDoList from "../todolists/ToDoList";
 import ToDoItem from "../todoitems/ToDoItem";
+import ToDoItemPriority from "../todoitempriorities/ToDoItemPriority";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
@@ -26,6 +27,7 @@ function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [profileTodolists, setProfileTodolists] = useState({ results: [] });
   const [profileTodoitems, setProfileTodoitems] = useState({ results: [] });
+  const [profileTodoitemPriorities, setProfileTodoitemPriorities] = useState({ results: [] });
   const [profileData, setProfileData] = useState({
     // we will use the pageProfile later!
     pageProfile: { results: [] },
@@ -39,15 +41,21 @@ function ProfilePage() {
 
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
+  const [todoitem, setSelectedToDoItem] = useState('');
+  const [todoitems, setSelectedToDoItems] = useState('');
+  const [todoitempriority, setToDoItemPriority] = useState({ results: [] });
+ 
 
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [{ data: pageProfile }, { data: profileTodolists }, { data: profileTodoitems }] =
+        const [{ data: pageProfile }, { data: profileTodolists }, { data: profileTodoitems },{ data: profileTodoitemPriorities }] =
           await Promise.all([
             axiosReq.get(`/profiles/${id}/`),
             axiosReq.get(`/todolists/?owner__profile=${id}`),
             axiosReq.get(`/todoitems/?owner__profile=${id}`),
+            axiosReq.get(`/todoitempriorities/?owner__profile=${id}`),
           ]);
         setProfileData((prevState) => ({
           ...prevState,
@@ -55,6 +63,7 @@ function ProfilePage() {
         }));
         setProfileTodolists(profileTodolists);
         setProfileTodoitems(profileTodoitems);
+        setProfileTodoitemPriorities(profileTodoitemPriorities);
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
@@ -62,7 +71,8 @@ function ProfilePage() {
     };
     fetchData();
   }, [id, setProfileData]);
-
+  
+  
   const mainProfile = (
     <>
       {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
@@ -93,73 +103,54 @@ function ProfilePage() {
     </>
   );
 
-  const mainProfileTodolists = (
-    <>
-      <hr />
-      <p className="text-center">{profile?.owner}'s posts</p>
-      <hr />
-      {profileTodolists.results.length ? (
-        <InfiniteScroll
-          children={profileTodolists.results.map((todolist) => (
-            <ToDoList key={todolist.id} {...todolist} setTodolists={setProfileTodolists} />
-          ))}
-          dataLength={profileTodolists.results.length}
-          loader={<Asset spinner />}
-          hasMore={!!profileTodolists.next}
-          next={() => fetchMoreData(profileTodolists, setProfileTodolists)}
-        />
-      ) : (
-        <Asset
-          src={NoResults}
-          message={`No results found, ${profile?.owner} hasn't todolist created yet.`}
-        />
-      )}
-    </>
-  );
-  const mainProfileTodoitems = (
-    <>
-      <hr />
-      <p className="text-center">{profile?.owner}'s Todoitems</p>
-      <hr />
-      {profileTodoitems.results.length ? (
-        <InfiniteScroll
-          children={profileTodoitems.results.map((todoitem) => (
-            <ToDoItem key={todoitem.id} {...todoitem} setTodoitems={setProfileTodoitems} />
-          ))}
-          dataLength={profileTodoitems.results.length}
-          loader={<Asset spinner />}
-          hasMore={!!profileTodoitems.next}
-          next={() => fetchMoreData(profileTodoitems, setProfileTodoitems)}
-        />
-      ) : (
-        <Asset
-          src={NoResults}
-          message={`No results found, ${profile?.owner} hasn't todoitem created yet.`}
-        />
-      )}
-    </>
-  );
+ 
 
   return (
-    <Row>
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
-        
-        <Container className={appStyles.Content}>
-          {hasLoaded ? (
-            <>
-              {mainProfile}
-              {mainProfileTodolists}
-              
-              {mainProfileTodoitems}
-              
-            </>
-          ) : (
-            <Asset spinner />
-          )}
-        </Container>
-      </Col>
+    <ul>
       
-    </Row>
+      {hasLoaded ? (
+      <>
+      
+      {mainProfile}
+
+      {profileTodolists.results.map((todolist) =>
+        <div key={todolist.id} >
+        <h5><ToDoList  {...todolist} setTodolists={setProfileTodolists} /></h5>
+            
+      
+          {profileTodoitems.results.map((todoitem)=>(
+
+            
+            <div key={todoitem.id} className="list-group-item d-flex justify-content-between align-items-center"> 
+            <ToDoItem  {...todoitem} setTodoitems={setProfileTodoitems} />  
+            
+          
+            
+          
+            </div>
+      
+          ))}
+        
+        
+        </div>
+       
+       )}
+       {profileTodoitemPriorities.results.map((todoitempriority)=>(
+                <li key={todoitempriority.id} className="list-group-item d-flex justify-content-between align-items-center"> 
+                <ToDoItemPriority  {...todoitempriority} setTodoitemPriorities={setProfileTodoitemPriorities} /> 
+                </li>
+              ))}
+          
+      </>
+          ) : (
+            
+        <Asset
+        src={NoResults}
+        message={`No results found, ${profile?.owner} hasn't todolist created yet.`}
+      />
+
+          )}
+    </ul>
   );
 }
 

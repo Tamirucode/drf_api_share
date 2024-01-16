@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Avatar from "../../components/Avatar";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
-import styles from "../../styles/ToDoList.module.css";
 import Col from "react-bootstrap/Col";
 import Alert from "react-bootstrap/Alert";
 import { ListGroup } from "react-bootstrap";
@@ -11,49 +10,44 @@ import btnStyles from "../../styles/Button.module.css";
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { Link } from "react-router-dom";
-// Importing toastify module
-import { ToastContainer,toast } from "react-toastify";
- 
-// Import toastify css file
-import "react-toastify/dist/ReactToastify.css";
- 
-// toast-configuration method,
-// it is compulsory method.
-
+import { useParams } from "react-router";
 function ToDoItemCreateForm(props) {
   const { profile_image, profile_id , owner} = props;
   const [errors, setErrors] = useState({});
-
+  
   const [todoitemData, setToDoItemData] = useState({
     todolist: "",
     title: "",
     description: "",
     due_date: "",
-   
     completed: "",
-    
-    
   });
-  const { todolist, title, description, due_date,  completed } = todoitemData;
+  
+  const { todolist, title, description, due_date, completed } = todoitemData;
+  const [todoListItems, setTodoListItems] = useState([]);
   const history = useHistory();
-
+  const { id } = useParams();
   const handleChange = (event) => {
     setToDoItemData({
       ...todoitemData,
       [event.target.name]: event.target.value,
     });
   };
-  const notify = () => toast.success('Successfully add todoitem!', {
-    theme: "colored",
-    position: "top-center",
-    autoClose: 2000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    
-    });
+  
+  useEffect(() => {
+    const fetchTodoListItems = async () => {
+      try {
+        const { data } = await axiosReq.get(`/todolists/`);
+        console.log(data)
+        setTodoListItems(data.results);
+      } catch (error) {
+        console.error("Error fetching TodoList items:", error);
+      }
+    };
+  
+    fetchTodoListItems();
+  }, [id]);
+
   
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -63,13 +57,11 @@ function ToDoItemCreateForm(props) {
     formData.append("title", title);
     formData.append("description",  description);
     formData.append("due_date", due_date);
-    
     formData.append("completed", completed);
 
     try {
       const { data } = await axiosReq.post("/todoitems/", formData);
       history.push(`/todoitems/${data.id}`);
-      
       } catch (err) {
       //console.log(err);
       if (err.response?.status !== 401) {
@@ -83,9 +75,18 @@ function ToDoItemCreateForm(props) {
       <Form.Group>
         <Form.Label>ToDoList</Form.Label>
         <Form.Control
+          as='select'
+          name="todolist"
           value={todolist}
-          onChange={handleChange}
-        />
+          onChange={handleChange}>
+          <option value=''>Select a List</option>
+          {todoListItems.map((item) => (
+            <option key={item.id} value={item.id}>
+              {item.title}
+            </option>
+          ))}
+        </Form.Control>
+       
       </Form.Group>
       {errors?.todolist?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
@@ -131,14 +132,14 @@ function ToDoItemCreateForm(props) {
         </Alert>
       ))}
       
+       
       <Form.Group>
         <Form.Label>Completed</Form.Label>
         <Form.Control
           
            type="checkbox"  
            name="completed"
-           
-          value={completed}
+           value={completed}
           onChange={handleChange}
         />
       </Form.Group>
@@ -153,21 +154,19 @@ function ToDoItemCreateForm(props) {
       >
         cancel
       </Button>
-      <Button onClick = {notify} className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit" >
         create
       </Button>
-      <ToastContainer/>
     </div>
   );
 
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
-      <Link to={`/profiles/${profile_id}`}>
-            <Avatar src={profile_image} height={55} />
-            <span className={styles.Owner}>{owner}</span>
+          <Link to={`/profiles/${profile_id}`}>
+            <Avatar src={profile_image} />
+            { owner}
           </Link>
-         
         <Col md={{ span: 5, offset: 4 }}>
           <ListGroup className="mb-3">
           {textFields}

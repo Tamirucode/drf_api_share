@@ -5,12 +5,12 @@ import { Route, Switch } from "react-router-dom";
 import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
-import ToDoListCreateForm from "./pages/todolists/ToDoListCeateForm";
+import ToDoListCreateForm from "./pages/todolists/ToDoListCreateForm";
 import ToDoListPage from "./pages/todolists/ToDoListPage";
 import ToDoItemPriorityPage from "./pages/todoitempriorities/ToDoItemPriorityPage.js";
 import ToDoItemCreateForm from "./pages/todoitems/ToDoItemCreateForm";
 import ToDoItemPrioritySelectForm from "./pages/todoitempriorities/ToDoItemPrioritySelectForm";
-import ToDoItemPage from "./pages/todoitems/ToDoItemPage";
+import ToDoItemPage from "./pages/todoitems/ToDoItemPage.js";
 import ToDoListsPage from "./pages/todolists/ToDoListsPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import ToDoListEditForm from "./pages/todolists/ToDoListEditForm";
@@ -28,20 +28,14 @@ const profile_id = currentUser?.profile_id || "";
       <NavBar />
       <Container className={styles.Main}>
         <Switch>
-        <Route
-            exact
-            path="/"
-            render={() => (
-              <ToDoListsPage message="No results found. Adjust the search keyword." />
-            )}
-          />
-          
+        
+       
           <Route
             exact
             path="/"
             render={() => (
               <ToDoListsPage
-                message="No results found. Adjust the search keyword or like a post."
+                message="No results found. Adjust the search keyword todolist."
                 filter={`owner__profile=${profile_id}&ordering=-created_at&`}
               />
             )}

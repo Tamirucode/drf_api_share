@@ -29,7 +29,7 @@ function SignInForm() {
     event.preventDefault();
 
     try {
-      const { data } = await axios.post("/dj-rest-auth/login", signInData);
+      const { data } = await axios.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
       setTokenTimestamp(data);
       history.push("/");
@@ -50,7 +50,7 @@ function SignInForm() {
       <Col className="my-auto p-0 p-md-2" md={6}>
         <Container className={`${appStyles.Content} p-4 `}>
           <h1 className={styles.Header}>sign in</h1>
-          <Form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <Form.Group controlId="username">
               <Form.Label className="d-none">Username</Form.Label>
               <Form.Control
@@ -95,7 +95,7 @@ function SignInForm() {
                 {message}
               </Alert>
             ))}
-          </Form>
+          </form>
         </Container>
         <Container className={`mt-3 ${appStyles.Content}`}>
           <Link className={styles.Link} to="/signup">
