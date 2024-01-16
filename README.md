@@ -193,6 +193,37 @@ In this API I used four modle namely profile,  todolist, todoitem and todoitempr
 
 ![create to do list item not tobe blank title](https://github.com/Tamirucode/drf_api_share/assets/116649197/d296055b-3edb-458f-ac62-7f90a6a4d668)
 
+## Below: Created todoitempriority 
+
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/d477d013-289d-4205-ba11-90f468c8c31e)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/319baffa-54e6-49bf-b041-f6467ab4ec6f)
+
+## Below: Update todoitempriority by id
+
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/2fa85a6d-1e1a-4115-a0b8-8f81077368d4)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/a3a1caf9-dd1e-466e-9f44-5d7b63f74c3f)
+
+## Below: Delete todoitempriority 
+
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/ef31ce75-6655-4151-a008-b5cebc12c58a)
+
+
+## Below: After delete show no content
+
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/1259854d-ea49-4a6c-9563-cabfce70f537)
+
+## Below: After  delete check todoitempriority by id confirm :-HTTP Response  404
+
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/6f9c21cb-b0ed-47aa-81ef-f389b4a5e794)
+
+
+## Below: Todoitempriority list view 
+
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/23754194-b7e8-4456-9a5c-a4b456a8dd85)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/f39ed04a-75a0-41ce-b8e3-274172f55ae5)
+
+
+
 
 ### After Deployment testing API endpoint by profiles :- it works as expected
 
@@ -206,6 +237,9 @@ In this API I used four modle namely profile,  todolist, todoitem and todoitempr
 
 ![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/4676a2cf-26a4-4136-b211-e0949b213519)
 
+### After Deployment testing API endpoint by todoitempriorities :- it works as expected
+
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/c292b358-00cc-4b37-85c3-0cdcb09cf8b5)
 
 ## Testing
 
