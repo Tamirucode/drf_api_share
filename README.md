@@ -13,12 +13,15 @@ In this API I used three modle namely profile,  todolist, and todoitem
 
 ## Below: Models screenshot
 
-![model ppp5  a](https://github.com/Tamirucode/drf_api_share/assets/116649197/110e0480-aff0-4625-b4fe-73f1308f4d10)
-![model ppp5 b](https://github.com/Tamirucode/drf_api_share/assets/116649197/93c1a0dd-5ea8-4307-93e9-b2aa50e6b906)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/1ac7f845-d7b9-4097-85a9-9def26589bc8)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/649a046c-017d-46e9-bb9c-a4d0c1b4d941)
+
+
+
 
 - The code snippet above describes six properties on the profile model;
 
-   three properties on the Todolist model; eight properties on the Todoitem model.
+   three properties on the Todolist model; eight properties on the Todoitem model , and four properties on the Todoitempriority model;.
 
    Once I've set up a database and the initial user is created and ready to go
 
