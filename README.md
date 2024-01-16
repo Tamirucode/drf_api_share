@@ -9,7 +9,7 @@ requests to the Django backend, which is an API built using the Django REST fram
 
 With django-to-do-list, user can create one todolist and multiple todoitem with due date. Users have option of modifying the todolist and todoitem.
 
-In this API I used three modle namely profile,  todolist, and todoitem
+In this API I used four modle namely profile,  todolist, todoitem and todoitempriority
 
 ## Below: Models screenshot
 
@@ -138,12 +138,13 @@ In this API I used three modle namely profile,  todolist, and todoitem
 
 ## Below: Created todoitem list 
 
-![created todoitem list](https://github.com/Tamirucode/drf_api_share/assets/116649197/f3c9a748-972a-469a-b4c9-1a3aaba31546)
-![created todoitemlist pat 2](https://github.com/Tamirucode/drf_api_share/assets/116649197/5821a869-5329-4584-89cb-6934db75cf13)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/3dd698f6-95e1-4d58-acb5-2fcf22098c33)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/8b950364-bc21-4d19-9f2e-b9be6ff28e1f)
+
 
 ## Below: Delete todoitem 
 
-![delete to do item](https://github.com/Tamirucode/drf_api_share/assets/116649197/18187ed9-228d-4140-a1cf-6461215efa08)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/9e35a075-0c03-4a0a-983b-9cf431ff01c4)
 
 ## Below: After delete show no content
 
@@ -155,29 +156,38 @@ In this API I used three modle namely profile,  todolist, and todoitem
 
 ## Below: As loggedin user retrive todoitem by id
 
-![as loggdin user retrive todoitem by id](https://github.com/Tamirucode/drf_api_share/assets/116649197/9f0a1ca3-6f3f-4b5c-bb22-0457ff7fca53)
-![retrive todoitem  by id part 2](https://github.com/Tamirucode/drf_api_share/assets/116649197/571ab350-8f2a-48b7-807e-f47cc4eea5b8)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/4d27329e-8f6d-4a9d-8b83-e83645be04a7)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/18b08a5f-f4b6-4a9f-96cf-49671bae1350)
+
+
 
 ## Below: Update todoitem by id
 
-![todo item update by id](https://github.com/Tamirucode/drf_api_share/assets/116649197/034fd636-c126-4869-90cb-dea2acd03398)
-![todoitem update by id part 2](https://github.com/Tamirucode/drf_api_share/assets/116649197/1a3fc72e-f2a9-4e98-bdfe-2607f50a9bbe)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/f33de10a-57d4-4d8c-a4a8-0a8124d2e5ca)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/b16a3b8d-c5fc-47ff-b3c5-2def8f2e1947)
+
 
 ## Below: Todoitem list view 
 
-![todoitem list](https://github.com/Tamirucode/drf_api_share/assets/116649197/9f63efb7-f3d3-431b-b856-4b75d528a893)
-![todoitemlist part 2](https://github.com/Tamirucode/drf_api_share/assets/116649197/7ade8d26-3f12-4c53-8794-f5871ce8d296)
-![todoitem list pat 3](https://github.com/Tamirucode/drf_api_share/assets/116649197/037a05b9-9c5f-4260-b1a2-971da9cd0c48)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/eac9a0fe-68aa-462a-8d87-d89d648fe5fc)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/5cb655e4-06b8-4584-b1cf-2ff80d5d9399)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/e7224c29-481a-49f3-b4eb-dc1652527072)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/4c9e66c9-a92e-41e8-a080-d7222204a06e)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/174cbe23-e72b-4629-b72a-0bd507c04a3d)
+
 
 ## Below: Search todoitem by title name
 
-![search by todoitem title name](https://github.com/Tamirucode/drf_api_share/assets/116649197/6cf5537e-79d6-451a-8793-d9de6d0cc11f)
-![search by todoitem title name section 2](https://github.com/Tamirucode/drf_api_share/assets/116649197/b0728520-974b-4747-b07a-16e82ab80fba)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/ff11146a-d3ca-4772-a9a9-f346041435b8)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/5f825cee-3e3f-4608-882b-3122971b7b66)
+
 
 ## Below: Filter specific user todoitem
 
-![filter specific user todoitem](https://github.com/Tamirucode/drf_api_share/assets/116649197/68ad3a12-f343-421f-9c94-35607ce84f8b)
-![filter specific user todoitem part 2](https://github.com/Tamirucode/drf_api_share/assets/116649197/97481caf-1571-4b4d-a36b-dd5f8e7d865e)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/1a755123-476d-48ad-a22b-9da144056e90)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/836cd095-923a-4ca2-aee0-539d6a9cf189)
+
+
 
 ## Below: create todoitem with blank title :-:-HTTP Response  400 
 
@@ -194,7 +204,8 @@ In this API I used three modle namely profile,  todolist, and todoitem
 
 ### After Deployment testing API endpoint by todoitems :- it works as expected
 
-![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/6a9c5429-3d0c-4cd0-9775-29823d5f780f)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/4676a2cf-26a4-4136-b211-e0949b213519)
+
 
 ## Testing
 
