@@ -16,7 +16,10 @@ In this API I used four modle namely profile,  todolist, todoitem and todoitempr
 ![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/1ac7f845-d7b9-4097-85a9-9def26589bc8)
 ![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/649a046c-017d-46e9-bb9c-a4d0c1b4d941)
 
+## Below: profile and home page design screenshot
 
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/1c58a2a0-e9fa-4cc5-89b6-369d31499ddf)
+![image](https://github.com/Tamirucode/drf_api_share/assets/116649197/d72ffcdb-c2d7-4142-863d-3217161a5149)
 
 
 - The code snippet above describes six properties on the profile model;
