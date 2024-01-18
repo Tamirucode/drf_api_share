@@ -2,11 +2,8 @@ import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { useParams } from "react-router";
-import { Link} from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import ToDoItem from "./ToDoItem";
-import ToDoItemPrioritySelectForm from "../todoitempriorities/ToDoItemPrioritySelectForm";
-import ToDoItemPriorities from "../todoitempriorities/ToDoItemPriority";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function ToDoItemPage() {

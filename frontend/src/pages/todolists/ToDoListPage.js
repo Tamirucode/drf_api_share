@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { Link, useHistory } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import appStyles from "../../App.module.css";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import ToDoList from "./ToDoList";
-import ToDoItemPage from "../todoitems/ToDoItem";
-import ToDoItemCreateForm from "../todoitems/ToDoItemCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 
@@ -17,8 +14,8 @@ function ToDoListPage() {
   const [todolist, setToDoList] = useState({ results: [] });
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
- 
   const [todolists, setToDoLists] = useState({ results: [] });
+  
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -27,7 +24,6 @@ function ToDoListPage() {
           axiosReq.get(`/todoitems/?todolist=${id}`),
         ]);
         setToDoList({ results: [todolist] });
-        
         setToDoLists(todolists);
       } catch (err) {
         //console.log(err);

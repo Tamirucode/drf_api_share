@@ -1,10 +1,7 @@
 import React from "react";
-import styles from "../../styles/ToDoItemPriority.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import Card from "react-bootstrap/Card";
 import Media from "react-bootstrap/Media";
-import { Link, useHistory } from "react-router-dom";
-import Avatar from "../../components/Avatar";
+import {  useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
 
@@ -12,12 +9,7 @@ const ToDoItemPriority = (props) => {
   const {
     id,
     owner,
-    profile_id,
-    profile_image,
-    todoitem,
     priority,
-    created_at,
-    
   } = props;
 
   const currentUser = useCurrentUser();

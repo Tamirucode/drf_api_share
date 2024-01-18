@@ -1,10 +1,8 @@
 import React from "react";
 import { Media } from "react-bootstrap";
-import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { MoreDropdown } from "../../components/MoreDropdown";
-import styles from "../../styles/ToDoItem.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";

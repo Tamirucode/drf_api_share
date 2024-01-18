@@ -1,25 +1,15 @@
 import React, { useEffect, useState } from "react";
-
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
-
 import Asset from "../../components/Asset";
-
 import styles from "../../styles/ProfilePage.module.css";
-import appStyles from "../../App.module.css";
-
-
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
-
 import { Image } from "react-bootstrap";
-import InfiniteScroll from "react-infinite-scroll-component";
 import ToDoList from "../todolists/ToDoList";
 import ToDoItem from "../todoitems/ToDoItem";
 import ToDoItemPriority from "../todoitempriorities/ToDoItemPriority";
-import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
 
@@ -35,17 +25,9 @@ function ProfilePage() {
   });
   const currentUser = useCurrentUser();
   const { id } = useParams();
-
-  
   const { pageProfile } = profileData;
-
   const [profile] = pageProfile.results;
-  const is_owner = currentUser?.username === profile?.owner;
-  
- 
- console.log(profileTodolists)
-  console.log(profileTodoitems)
-  console.log(profileTodoitemPriorities)
+
  
   useEffect(() => {
     const fetchData = async () => {
@@ -66,7 +48,7 @@ function ProfilePage() {
         setProfileTodoitemPriorities(profileTodoitemPriorities);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+        //console.log(err);
       }
     };
     fetchData();

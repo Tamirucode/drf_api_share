@@ -55,7 +55,7 @@ function ToDoItemPrioritySelectForm() {
           console.log(data)
           setToDoItems(data.results);
         } catch (error) {
-          console.error("Error fetching Todoitems:", error);
+          //console.error("Error fetching Todoitems:", error);
         }
       };
     
@@ -74,7 +74,7 @@ function ToDoItemPrioritySelectForm() {
       history.push(`/todoitempriorities/${data.id}`);
       
       } catch (err) {
-      console.log(err);
+      //console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
