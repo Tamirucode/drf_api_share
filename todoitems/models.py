@@ -19,7 +19,6 @@ class ToDoItem(models.Model):
     description = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     due_date = models.DateTimeField(default=one_week_hence)
-    
     completed = models.BooleanField(default = False)
     
     

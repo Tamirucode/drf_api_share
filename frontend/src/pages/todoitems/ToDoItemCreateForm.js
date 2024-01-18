@@ -34,6 +34,18 @@ function ToDoItemCreateForm(props) {
     });
   };
   
+  const notify = () => toast.success('Successfully add todoitem!', {
+    theme: "colored",
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    
+    });
+  
   useEffect(() => {
     const fetchTodoListItems = async () => {
       try {
@@ -154,9 +166,10 @@ function ToDoItemCreateForm(props) {
       >
         cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit" >
+      <Button  onClick={notify} className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit" >
         create
       </Button>
+      <ToastContainer/>
     </div>
   );
 

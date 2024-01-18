@@ -3,7 +3,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from drf_api_share.permissions import IsOwnerOrReadOnly
 from .models import ToDoItem
 from .serializers import ToDoItemSerializer, ToDoItemDetailSerializer
-
+from rest_framework import serializers
 
 class ToDoItemList(generics.ListCreateAPIView):
     """
@@ -37,6 +37,7 @@ class ToDoItemDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = ToDoItemDetailSerializer
+    due_date = serializers.DateTimeField()
     queryset = ToDoItem.objects.all()
 
 

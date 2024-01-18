@@ -18,7 +18,8 @@ import ToDoItemEditForm from "./pages/todoitems/ToDoItemEditForm";
 import ToDoItemPriorityEditSelectForm from "./pages/todoitempriorities/ToDoItemPriorityEditSelectForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
-
+import UsernameForm from "./pages/profiles/UsernameForm";
+import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import NotFound from "./components/NotFound";
 function App() {
 const currentUser = useCurrentUser();
@@ -40,8 +41,7 @@ const profile_id = currentUser?.profile_id || "";
               />
             )}
           />
-          
-          
+         
           
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
@@ -55,7 +55,22 @@ const profile_id = currentUser?.profile_id || "";
           <Route exact path="/todoitems/:id/edit" render={() => <ToDoItemEditForm />} />
           <Route exact path="/todoitempriorities/:id/edit" render={() => <ToDoItemPriorityEditSelectForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
-          <Route exact path="/profiles/:id/edit" render={() => <ProfileEditForm />} />
+          <Route
+            exact
+            path="/profiles/:id/edit/username"
+            render={() => <UsernameForm />}
+          />
+          <Route
+            exact
+            path="/profiles/:id/edit/password"
+            render={() => <UserPasswordForm />}
+          />
+          <Route
+            exact
+            path="/profiles/:id/edit"
+            render={() => <ProfileEditForm />}
+          />
+
           <Route render={() => <NotFound />} />
         </Switch>
       </Container>

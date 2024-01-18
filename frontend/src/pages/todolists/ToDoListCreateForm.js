@@ -24,7 +24,17 @@ function ToDoListCreateForm() {
     });
   };
 
-  
+  const notify = () => toast.success('Successfully add todolist!', {
+    theme: "colored",
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    
+    });
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -66,9 +76,10 @@ function ToDoListCreateForm() {
       >
         cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+      <Button onClick={notify} className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
         create
       </Button>
+      <ToastContainer/>
     </div>
   );
 

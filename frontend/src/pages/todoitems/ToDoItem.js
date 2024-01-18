@@ -8,9 +8,15 @@ import styles from "../../styles/ToDoItem.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
-import ToDoItemPriority from "../todoitempriorities/ToDoItemPriority";
-import ToDoItemPriorityPage from "../todoitempriorities/ToDoItemPriorityPage";
 
+function checker(){
+  const result = window.confirm("Are you sure you want to delete this todolist?")
+  if (result === true){
+      window.alert('Ok')
+  }else{
+    window.alert('cancel')
+}
+}
 const ToDoItem = (props) => {
   
   const {
@@ -24,7 +30,6 @@ const ToDoItem = (props) => {
     id,
     
   } = props;
-const{priority,handlePriorityChange}=ToDoItemPriority
 
  
  const currentUser = useCurrentUser();

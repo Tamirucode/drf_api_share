@@ -41,11 +41,11 @@ function ProfilePage() {
 
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
-  const [todoitem, setSelectedToDoItem] = useState('');
-  const [todoitems, setSelectedToDoItems] = useState('');
-  const [todoitempriority, setToDoItemPriority] = useState({ results: [] });
+  
  
-
+ console.log(profileTodolists)
+  console.log(profileTodoitems)
+  console.log(profileTodoitemPriorities)
  
   useEffect(() => {
     const fetchData = async () => {
@@ -118,14 +118,20 @@ function ProfilePage() {
         <h5><ToDoList  {...todolist} setTodolists={setProfileTodolists} /></h5>
             
       
-          {profileTodoitems.results.map((todoitem)=>(
-
-            
-            <div key={todoitem.id} className="list-group-item d-flex justify-content-between align-items-center"> 
-            <ToDoItem  {...todoitem} setTodoitems={setProfileTodoitems} />  
+          {profileTodoitems.results
+            .filter((todoitem) => todoitem.todolist === todolist.id)
+            .map((todoitem)=>(
+              <div key={todoitem.id} className="list-group-item d-flex justify-content-between align-items-center"> 
+              <ToDoItem  {...todoitem} setTodoitems={setProfileTodoitems} />  
             
           
-            
+            {profileTodoitemPriorities.results
+              .filter((todoitempriority) => todoitempriority.todoitem === todoitem.id)
+              .map((todoitempriority)=>(
+                <li key={todoitempriority.id} className="list-group-item d-flex justify-content-between align-items-center"> 
+                <ToDoItemPriority  {...todoitempriority} setTodoitemPriorities={setProfileTodoitemPriorities} /> 
+                </li>
+              ))}
           
             </div>
       
@@ -135,11 +141,7 @@ function ProfilePage() {
         </div>
        
        )}
-       {profileTodoitemPriorities.results.map((todoitempriority)=>(
-                <li key={todoitempriority.id} className="list-group-item d-flex justify-content-between align-items-center"> 
-                <ToDoItemPriority  {...todoitempriority} setTodoitemPriorities={setProfileTodoitemPriorities} /> 
-                </li>
-              ))}
+     
           
       </>
           ) : (

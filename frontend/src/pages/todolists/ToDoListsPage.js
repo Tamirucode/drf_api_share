@@ -13,10 +13,10 @@ import { useLocation } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import NoResults from "../../assets/no-results.png";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Link, useHistory } from "react-router-dom";
+
 function ToDoListsPage({ message, filter = "" }) {
   const [todolists, setToDoLists] = useState({ results: [] });
-  const [todoitems, setToDoItems] = useState({ results: [] });
+ 
   const currentUser = useCurrentUser();
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
