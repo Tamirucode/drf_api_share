@@ -31,16 +31,9 @@ const profile_id = currentUser?.profile_id || "";
         <Switch>
         
        
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <ToDoListsPage
-                message="No results found. Adjust the search keyword todolist."
-                filter={`owner__profile=${profile_id}&ordering=-created_at&`}
-              />
-            )}
-          />
+      <Route exact path="/" render={() =>(<ToDoListsPage 
+      message="No results found. Adjust the search keyword todolist."
+                filter={`owner__profile=${profile_id}&ordering=-created_at&`}/>)}/>
          
           
           <Route exact path="/signin" render={() => <SignInForm />} />
@@ -55,22 +48,9 @@ const profile_id = currentUser?.profile_id || "";
           <Route exact path="/todoitems/:id/edit" render={() => <ToDoItemEditForm />} />
           <Route exact path="/todoitempriorities/:id/edit" render={() => <ToDoItemPriorityEditSelectForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
-          <Route
-            exact
-            path="/profiles/:id/edit/username"
-            render={() => <UsernameForm />}
-          />
-          <Route
-            exact
-            path="/profiles/:id/edit/password"
-            render={() => <UserPasswordForm />}
-          />
-          <Route
-            exact
-            path="/profiles/:id/edit"
-            render={() => <ProfileEditForm />}
-          />
-
+          <Route exact path="/profiles/:id/edit/username" render={() => <UsernameForm />}/>
+          <Route exact path="/profiles/:id/edit/password" render={() => <UserPasswordForm />}/>
+          <Route exact path="/profiles/:id/edit" render={() => <ProfileEditForm />}/>
           <Route render={() => <NotFound />} />
         </Switch>
       </Container>

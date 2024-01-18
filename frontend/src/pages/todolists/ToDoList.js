@@ -9,6 +9,8 @@ import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import ToDoItem from "../todoitems/ToDoItem";
 import ToDoListPage from "./ToDoList";
+
+
 const ToDoList = (props) => {
   const {
     id,
@@ -58,7 +60,12 @@ const ToDoList = (props) => {
           {is_owner && (
               <MoreDropdown
                 handleEdit={handleEdit}
-                handleDelete={handleDelete}
+                handleDelete={() => {
+                  window.alert("Are you sure you want to delete this todolist?"
+                    
+                  );
+                  handleDelete();
+                }}
                
               />
             )}

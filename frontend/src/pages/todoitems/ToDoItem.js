@@ -9,14 +9,14 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 
-function checker(){
-  const result = window.confirm("Are you sure you want to delete this todolist?")
-  if (result === true){
-      window.alert('Ok')
-  }else{
-    window.alert('cancel')
-}
-}
+//function checker(){
+ // const result = window.confirm("Are you sure you want to delete this todolist?")
+ // if (result === true){
+  //    window.alert('Ok')
+ // }else{
+  //  window.alert('cancel')
+//}
+//}
 const ToDoItem = (props) => {
   
   const {
@@ -83,7 +83,11 @@ const ToDoItem = (props) => {
         {is_owner && (
           <MoreDropdown
           handleEdit={handleEdit}
-          handleDelete={handleDelete}
+          handleDelete={() => {
+            window.alert("Are you sure you want to delete this todoitem?");
+            handleDelete();
+          }}
+         
         />
         )}
         
