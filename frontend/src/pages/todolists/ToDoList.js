@@ -51,10 +51,10 @@ const ToDoList = (props) => {
             <span className={styles.Owner}>{owner}</span>
           </Link>
           
-        <Link to='/todoitems'> <h3>{title}</h3></Link>
+        <Link to='/todoitems'> <h5>{title}</h5></Link>
          
         <div className="d-flex align-items-center">
-        <h3> <span>{created_at}</span></h3>
+        <h5> <span>{created_at}</span></h5>
           {is_owner && (
               <MoreDropdown
                 handleEdit={handleEdit}
