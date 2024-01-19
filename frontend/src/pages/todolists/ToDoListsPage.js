@@ -62,9 +62,8 @@ function ToDoListsPage({ message, filter = "" }) {
         </Form>
         {hasLoaded ? (
           
-             <>
-           
-            {todolists.results.length ? (
+      <>
+          {todolists.results.length ? (
               <InfiniteScroll
                 children={todolists.results.map((todolist) => (
                   <ToDoList key={todolist.id} {...todolist} setToDoLists={setToDoLists} />
