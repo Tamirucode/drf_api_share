@@ -15,9 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import  logout_route
 from django.views.generic import TemplateView
-
+from .views import  logout_route
 urlpatterns = [
    # path('', root_route),
     path('', TemplateView.as_view(template_name='index.html')),

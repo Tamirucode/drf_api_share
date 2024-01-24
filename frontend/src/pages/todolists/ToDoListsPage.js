@@ -63,7 +63,7 @@ function ToDoListsPage({ message, filter = "" }) {
         {hasLoaded ? (
           
       <>
-          {todolists.results.length ? (
+        {todolists.results?.length?  (
               <InfiniteScroll
                 children={todolists.results.map((todolist) => (
                   <ToDoList key={todolist.id} {...todolist} setToDoLists={setToDoLists} />
@@ -73,18 +73,19 @@ function ToDoListsPage({ message, filter = "" }) {
                 hasMore={!!todolists.next}
                 next={() => fetchMoreData(todolists, setToDoLists)}
               />
+           
             ) : (
-              <Container className={appStyles.Content}>
+              <Container className={appStyles.Title}>
                 <Asset src={NoResults} message={message} />
               </Container>
             )}
+
           </>
         ) : (
-          <Container className={appStyles.Content}>
+          <Container className={appStyles.Title}>
             <Asset spinner />
           </Container>
         )}
-        
       </Col>
       
     </Row>
