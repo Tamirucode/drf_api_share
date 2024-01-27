@@ -94,7 +94,7 @@ function ToDoItemPrioritySelectForm() {
           onChange={handleChange}
         >
         <option value=''>Select a Todoitem</option>
-        {todoItems.map((item) => (
+        {todoItems?.map((item) => (
             <option key={item.id} value={item.id}>
               {item.title}
             </option>

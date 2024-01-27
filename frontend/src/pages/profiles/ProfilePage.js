@@ -95,7 +95,7 @@ function ProfilePage() {
       
       {mainProfile}
 
-      {profileTodolists.results.map((todolist) =>
+      {profileTodolists.results?.map((todolist) =>
         <div key={todolist.id} >
         <h5><ToDoList  {...todolist} setTodolists={setProfileTodolists} /></h5>
             
@@ -116,16 +116,10 @@ function ProfilePage() {
               ))}
           
             </div>
-      
-          ))}
-        
-        
+            ))}
         </div>
-       
        )}
-     
-          
-      </>
+     </>
           ) : (
             
         <Asset
