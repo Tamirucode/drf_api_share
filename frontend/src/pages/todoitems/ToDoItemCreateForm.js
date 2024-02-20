@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Alert from "react-bootstrap/Alert";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { ListGroup } from "react-bootstrap";
 import btnStyles from "../../styles/Button.module.css";
 import { useHistory } from "react-router";
@@ -39,10 +40,12 @@ function ToDoItemCreateForm(props) {
     });
   };
   
+  const currentUser = useCurrentUser();
+
   const notify = () => toast.success('Successfully add todoitem!', {
     theme: "colored",
     position: "top-center",
-    autoClose: 2000,
+    autoClose: 3000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
@@ -97,10 +100,11 @@ function ToDoItemCreateForm(props) {
           value={todolist}
           onChange={handleChange}>
           <option value=''>Select a List</option>
-          {todoListItems?.map((item) => (
-            <option key={item.id} value={item.id}>
-              {item.title}
-            </option>
+          {todoListItems?.filter((item) => item.owner === currentUser?.username)
+                         .map((item) => (
+                          <option key={item.id} value={item.id}>
+                                {item.title}
+                          </option>
           ))}
         </Form.Control>
        

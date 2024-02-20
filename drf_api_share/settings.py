@@ -34,7 +34,8 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE':'10',
-    'DATETIME_FORMAT': '%d %b %Y',
+    #'DATETIME_FORMAT': '%d %b %Y',
+    'DATETIME_FORMAT': '%Y-%m-%d %H:%M',
 }
 if 'DEV' not in os.environ:
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
@@ -59,12 +60,12 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = 'DEBUG' in os.environ
-# DEBUG = True
+#DEBUG = 'DEV' in os.environ
+DEBUG = False
 #ALLOWED_HOSTS = ['8000-tamirucode-drfapishare-rxgp524om7j.ws-eu105.gitpod.io']
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'), 
-   '8000-tamirucode-drfapishare-nyh6wiadadb.ws-eu107.gitpod.io',
+   '8000-tamirucode-drfapishare-nyh6wiadadb.ws-eu108.gitpod.io',
     
 ]
 

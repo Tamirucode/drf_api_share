@@ -1,10 +1,7 @@
-
 import React, { useState, useEffect } from "react";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
-
 import Col from "react-bootstrap/Col";
 import Alert from "react-bootstrap/Alert";
 import { ListGroup } from "react-bootstrap";
@@ -30,7 +27,6 @@ function ToDoItemPriorityEditSelectForm() {
         owner ? setSelectedToDoItem(todoitem):history.push("/");
         owner ? setSelectedPriority(priority):history.push("/");
        
-        
       } catch (err) {
        // console.log(err);
       }
@@ -123,7 +119,6 @@ function ToDoItemPriorityEditSelectForm() {
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
-      
         <Col md={{ span: 5, offset: 4 }}>
           <ListGroup className="mb-3">
           {textFields}

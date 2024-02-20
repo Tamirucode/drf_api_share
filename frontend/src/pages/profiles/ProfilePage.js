@@ -23,6 +23,7 @@ function ProfilePage() {
     pageProfile: { results: [] },
     
   });
+  
   const currentUser = useCurrentUser();
   const { id } = useParams();
   const { pageProfile } = profileData;
@@ -108,7 +109,7 @@ function ProfilePage() {
             
           
             {profileTodoitemPriorities.results
-              .filter((todoitempriority) => todoitempriority.todoitem === todoitem.id)
+              .filter((todoitempriority) =>  todoitempriority.todoitem === todoitem.id )
               .map((todoitempriority)=>(
                 <li key={todoitempriority.id} className="list-group-item d-flex justify-content-between align-items-center"> 
                 <ToDoItemPriority  {...todoitempriority} setTodoitemPriorities={setProfileTodoitemPriorities} /> 

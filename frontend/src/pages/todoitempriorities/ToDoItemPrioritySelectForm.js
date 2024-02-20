@@ -2,7 +2,7 @@ import React, { useState, useEffect  } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
-import ToDoItemPage from "../todoitems/ToDoItem";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Col from "react-bootstrap/Col";
 import Alert from "react-bootstrap/Alert";
 import { ListGroup } from "react-bootstrap";
@@ -14,7 +14,6 @@ import { ToastContainer,toast } from "react-toastify";
  
 // Import toastify css file
 import "react-toastify/dist/ReactToastify.css";
-
 import { useParams } from "react-router";
 // toast-configuration method,
 // it is compulsory method.
@@ -36,11 +35,14 @@ function ToDoItemPrioritySelectForm() {
     setSelectedPriority(event.target.value);
   };
   
+  
+  const currentUser = useCurrentUser();
+  console.log(currentUser)
 
   const notify = () => toast.success('Successfully add todoitemprirority!', {
     theme: "colored",
     position: "top-center",
-    autoClose: 2000,
+    autoClose: 3000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
@@ -94,12 +96,14 @@ function ToDoItemPrioritySelectForm() {
           onChange={handleChange}
         >
         <option value=''>Select a Todoitem</option>
-        {todoItems?.map((item) => (
-            <option key={item.id} value={item.id}>
-              {item.title}
-            </option>
+        {todoItems?.filter((item) => item.owner === currentUser?.username)
+                  .map((item) => (
+                  <option key={item.id} value={item.id}>
+                        {item.title}
+                  </option>
           ))}
-          </Form.Control>
+          
+        </Form.Control>
       </Form.Group>
       {errors?.todoitem?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
@@ -118,7 +122,7 @@ function ToDoItemPrioritySelectForm() {
             <option value="low">Low Priority</option>
           </select>
         
-          </Form.Group>
+  </Form.Group>
          
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
@@ -132,16 +136,12 @@ function ToDoItemPrioritySelectForm() {
       <ToastContainer/>
       </div>
        
-      
-           
-        
     </>
   );
 
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
-      
         <Col md={{ span: 5, offset: 4 }}>
           <ListGroup className="mb-3">
           {textFields}

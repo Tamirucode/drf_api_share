@@ -31,6 +31,6 @@ def logout_route(request):
 
 #@api_view()
 #def root_route(request):
- #   return Response({
-  #      "message": "Welcome to my drf API share!"
-   # })
+   # return Response({
+    #   "message": "Welcome to my drf API share!"
+    #})

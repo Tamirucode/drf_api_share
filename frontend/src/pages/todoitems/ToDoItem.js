@@ -22,7 +22,6 @@ const ToDoItem = (props) => {
     profile_image,
     owner,
     description,
-    
     due_date,
     title,
     id,
@@ -30,7 +29,7 @@ const ToDoItem = (props) => {
   } = props;
 
  
- const currentUser = useCurrentUser();
+  const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
   

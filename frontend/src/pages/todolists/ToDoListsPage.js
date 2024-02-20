@@ -15,8 +15,8 @@ import NoResults from "../../assets/no-results.png";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function ToDoListsPage({ message, filter = "" }) {
+  
   const [todolists, setToDoLists] = useState({ results: [] });
- 
   const currentUser = useCurrentUser();
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
@@ -27,7 +27,6 @@ function ToDoListsPage({ message, filter = "" }) {
         const { data } = await axiosReq.get(`/todolists/?${filter}search=${query}`);
         
         setToDoLists(data);
-        
         setHasLoaded(true);
       } catch (err) {
         //console.log(err);

@@ -32,12 +32,8 @@ function ToDoItemPage() {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-       
-        <ToDoItem {...todoitem.results[0]} setToDoItems={setToDoItem} />
-        
-
+       <ToDoItem {...todoitem.results[0]} setToDoItems={setToDoItem} />
       </Col>
-      
     </Row>
   );
 }

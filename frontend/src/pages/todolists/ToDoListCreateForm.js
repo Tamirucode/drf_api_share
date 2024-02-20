@@ -31,7 +31,7 @@ function ToDoListCreateForm() {
   const notify = () => toast.success('Successfully add todolist!', {
     theme: "colored",
     position: "top-center",
-    autoClose: 2000,
+    autoClose: 3000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
