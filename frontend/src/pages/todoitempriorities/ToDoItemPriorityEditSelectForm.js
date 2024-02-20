@@ -9,7 +9,10 @@ import { ListGroup } from "react-bootstrap";
 import btnStyles from "../../styles/Button.module.css";
 import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
-
+// Importing toastify module
+import { ToastContainer,toast } from "react-toastify";
+ // Import toastify css file
+import "react-toastify/dist/ReactToastify.css";
 
 function ToDoItemPriorityEditSelectForm() {
   
@@ -58,6 +61,17 @@ function ToDoItemPriorityEditSelectForm() {
   };
   
   const currentUser = useCurrentUser();
+  const notify = () => toast.success('Successfully update todoitemprirority!', {
+    theme: "colored",
+    position: "top-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    
+    });
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -113,9 +127,10 @@ function ToDoItemPriorityEditSelectForm() {
         onClick={() => history.goBack()}>
         cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+      <Button onClick={notify} className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
         save
       </Button>
+      <ToastContainer/>
     </div>
   );
 

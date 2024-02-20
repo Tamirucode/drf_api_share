@@ -9,6 +9,10 @@ import { ListGroup } from "react-bootstrap";
 import btnStyles from "../../styles/Button.module.css";
 import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
+// Importing toastify module
+import { ToastContainer,toast } from "react-toastify";
+ // Import toastify css file
+import "react-toastify/dist/ReactToastify.css";
 
 function ToDoItemEditForm() {
   const [errors, setErrors] = useState({});
@@ -55,6 +59,19 @@ function ToDoItemEditForm() {
   }, [id]);
   
   const currentUser = useCurrentUser();
+
+  const notify = () => toast.success('Successfully update todoitem!', {
+    theme: "colored",
+    position: "top-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    
+    });
+  
   const handleChange = (event) => {
     setToDoItemData({
       ...todoitemData,
@@ -165,9 +182,10 @@ function ToDoItemEditForm() {
       >
         cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+      <Button onClick={notify} className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
         save
       </Button>
+      <ToastContainer/>
     </div>
   );
 
