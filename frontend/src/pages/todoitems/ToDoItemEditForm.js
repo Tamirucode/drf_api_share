@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Alert from "react-bootstrap/Alert";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { ListGroup } from "react-bootstrap";
 import btnStyles from "../../styles/Button.module.css";
 import { useHistory, useParams } from "react-router";
@@ -53,6 +54,7 @@ function ToDoItemEditForm() {
     fetchTodoListItems();
   }, [id]);
   
+  const currentUser = useCurrentUser();
   const handleChange = (event) => {
     setToDoItemData({
       ...todoitemData,
@@ -95,7 +97,8 @@ function ToDoItemEditForm() {
          onChange={handleChange}
         >
           <option value=''>Select a TodoList</option>
-          {todoListItems?.map((item) => (
+          {todoListItems?.filter((item) => item.owner === currentUser?.username)
+          .map((item) => (
             <option key={item.id} value={item.id}>
               {item.title}
             </option>

@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Alert from "react-bootstrap/Alert";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { ListGroup } from "react-bootstrap";
 import btnStyles from "../../styles/Button.module.css";
 import { useHistory, useParams } from "react-router";
@@ -56,6 +57,7 @@ function ToDoItemPriorityEditSelectForm() {
     setSelectedPriority(event.target.value);
   };
   
+  const currentUser = useCurrentUser();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -85,7 +87,8 @@ function ToDoItemPriorityEditSelectForm() {
           onChange={handleChange}
         >
         <option value=''>Select a Todoitem</option>
-        {todoItems?.map((item) => (
+        {todoItems?.filter((item) => item.owner === currentUser?.username)
+        .map((item) => (
             <option key={item.id} value={item.id}>
               {item.title}
             </option>
